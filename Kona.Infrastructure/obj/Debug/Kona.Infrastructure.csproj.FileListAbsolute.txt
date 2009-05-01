@@ -1,0 +1,6 @@
+D:\@Microsoft\Kona_MVCSamples\Kona.Infrastructure\bin\Debug\Kona.Infrastructure.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Infrastructure\bin\Debug\Kona.Infrastructure.pdb
+D:\@Microsoft\Kona_MVCSamples\Kona.Infrastructure\bin\Debug\Microsoft.Web.Mvc.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Infrastructure\obj\Debug\ResolveAssemblyReference.cache
+D:\@Microsoft\Kona_MVCSamples\Kona.Infrastructure\obj\Debug\Kona.Infrastructure.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Infrastructure\obj\Debug\Kona.Infrastructure.pdb

@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kona.Infrastructure", "Kona.Infrastructure\Kona.Infrastructure.csproj", "{37E201C2-2F3F-4F98-AF5F-8F5D786D2698}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kona.Web", "Kona.Web\Kona.Web.csproj", "{DF222812-F487-46F1-90C0-6CC036FFB235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kona.Tests", "Kona.Tests\Kona.Tests.csproj", "{299E5095-69C4-426B-8904-9F3ACA896E7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubSonic", "..\..\@SubSonic\SubSonic.Linq\SubSonic.Core\SubSonic.csproj", "{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37E201C2-2F3F-4F98-AF5F-8F5D786D2698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37E201C2-2F3F-4F98-AF5F-8F5D786D2698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37E201C2-2F3F-4F98-AF5F-8F5D786D2698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37E201C2-2F3F-4F98-AF5F-8F5D786D2698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF222812-F487-46F1-90C0-6CC036FFB235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF222812-F487-46F1-90C0-6CC036FFB235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF222812-F487-46F1-90C0-6CC036FFB235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF222812-F487-46F1-90C0-6CC036FFB235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{299E5095-69C4-426B-8904-9F3ACA896E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{299E5095-69C4-426B-8904-9F3ACA896E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{299E5095-69C4-426B-8904-9F3ACA896E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{299E5095-69C4-426B-8904-9F3ACA896E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53FF90B2-2D33-4EC0-91B6-A30FDF1B3374}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

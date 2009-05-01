@@ -1,0 +1,286 @@
+﻿/* CSS Document */
+
+/*Yahoo browser reset
+----------------------------------------------------------*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
+blockquote,th,td {margin:0; padding:0; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal; }
+ol,ul { list-style:none; }
+caption,th { text-align:left; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; }
+/*q:before,q:after { content:”; }*/
+abbr,acronym { border:0; }
+
+/*Defaults
+----------------------------------------------------------*/
+html {height: 100%;}
+
+body {font: normal 62.5% "Tahoma", "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+/*background:url(Kona_Homepage2.png) no-repeat top center;*/
+background:url(images/bodyBackground.gif) center repeat-y #f0f0f0;
+height: 100%;
+text-align:left; color:#142e18;}
+
+/* ---------- Headings ---------- */
+h1 {font-size: 2.6em; font-weight:normal; font-style: normal;} /* 26px / 10px = 2.6em */
+h2 {font-size: 2.4em; font-weight:normal; font-style: normal;} /* 24px / 10px = 2.4em */
+h3 {font-size: 2.2em; font-weight:normal; font-style: normal;} /* 22px*/
+h4 {font-size: 1.8em; font-weight:normal; font-style: normal;} /*18px*/
+h5 {font-size: 1.5em; font-weight:700; font-style: normal;} /*15px*/
+h6 {font-size: 1.3em; font-weight:600; font-style: normal;} /*13px*/
+p {font-size: 1.2em; font-weight:normal; font-style: normal; line-height:1.6em; padding:.4em 0em .5em 0em;} /*12px */
+
+/* ---------- links  ---------- */
+a {color:#006699;}
+a:focus, a:hover {text-decoration: underline;}
+a:visited {color:#006699;}
+
+.topNav a{color: #1c3c21; text-decoration: none;}
+.topNav a:hover {text-decoration: underline;}
+.topNav a:focus {text-decoration: underline;}
+.topNav a:visited {color: #1c3c21;}
+
+.leftnavList a{color: #1c3c21; text-decoration: none;}
+.leftnavList a:hover {text-decoration: underline;}
+.leftnavList a:focus {text-decoration: underline;}
+.leftnavList a:visited {color:#1c3c21;}
+
+#ftr1 a{color: #FFF; text-decoration: none;}
+#ftr1 a:hover {text-decoration: underline;}
+#ftr1 a:focus {text-decoration: underline;}
+#ftr1 a:visited {color:#FFF;}
+
+/* ---------- Lists ----------*/
+/* oredered list */
+ol.numberedList li{list-style-type: decimal;}
+/* unordered list */
+.bulletList {padding:.0em 0em .5em 1em;}
+ul.bulletList li{list-style-type:disc; font-size:1.2em; margin-left:1em; line-height:1.8em;}
+/* leftnav list */
+ul.leftnavList li{list-style:none; font-size:1.2em; margin-left:1em; line-height:1.8em;}
+
+/* ---------- Tables ---------- */
+th {font-size: 1.2em; font-weight:bold; font-style: normal; padding:.2em .5em .5em .5em; background:#e2e7e0;}
+td {font-size: 1.2em; font-weight:normal; font-style: normal; padding:.2em .5em .5em .5em;}
+
+/* ---------- hr ---------- */
+
+hr {color:#707c72; background-color:#707c72; height:1px; border:0;}
+
+/* ---------- Forms ---------- */
+
+fieldset {margin: 1em; padding: .5em; border: 1px solid #d8d8d8;}
+legend {font-size: 1.4em; font-weight: 600; padding: .2em; color:#142e18;}
+label{float:left; width:10em;}
+.formEntry{margin: 2px 12px 10px 10px;}
+input.textbox {width: 2em; border: 1px solid #CCC;}
+input.password {width: 200px; border: 1px solid #CCC;}
+input.confirmPassword {width: 200px; border: 1px solid #CCC;}
+input[type="radio"] {margin:1em 0em .2em 1em;}
+input[type="checkbox"] {}
+input[type="text"] {}
+
+input[type="button"] {
+font-weight: 500;
+padding: .4em;
+margin: .4em 0em 0em 0em;
+color: #333;
+border-top: 1px solid #CCC;
+border-right: 1px solid #a8aeb6;
+border-bottom: 1px solid #a8aeb6;
+border-left: 1px solid #CCC;
+background: #dcdfe2;
+cursor:pointer;
+}
+
+input[type="submit"] {
+font-weight: 500;
+padding: .4em;
+margin: .4em 0em 0em 0em;
+color: #333;
+border-top: 1px solid #CCC;
+border-right: 1px solid #a8aeb6;
+border-bottom: 1px solid #a8aeb6;
+border-left: 1px solid #CCC;
+background: #dcdfe2;
+cursor:pointer;
+}
+
+
+/*Outter layout
+----------------------------------------------------------*/
+
+/* -- Wraps the whole page so footer can be pushed down to the bottom. html and body both need to have height set to 100% for this to work -- */
+#wrapper {
+		position: relative;
+		min-height: 100%;
+		height: 100%;
+		voice-family: "\"}\"";
+		voice-family: inherit;
+		height: auto;
+		}
+html>body #wrapper {height: auto;}
+
+
+#hdr1 {
+	width:100%;
+	height:3.60em; /* 36px / 10px = 3.6em */
+	}
+	
+#hdr2 {
+	width:96em; /* 960px / 10px = 96em */ 
+	margin:0 auto;
+	}
+
+#hdr3 {
+	width:96em; /* 960px */
+	height:2.8em; 
+	margin:1em auto 1em auto;
+	border:1px #c5d0ca solid;
+	}
+
+#bdy {
+	width:96em; /* 960px */
+	padding-bottom:20em;   /*Paddin for the footer */
+	margin:0 auto;
+	}
+	
+#ftr1 {
+	position: absolute;
+	bottom: 0;
+	width:100%;
+	background:#30405e;
+	background:url(images/bkgnd_ftter.gif) no-repeat center bottom;
+	min-height:10em;
+}
+
+#ftr2{
+	width:94em; /* 960px */
+	margin:0 auto 2em auto;
+	padding:.8em;
+	background:#30405e;
+	color:#FFF;
+}
+
+
+/*  left column
+----------------------------------------------------------*/
+	
+.colleft {
+min-width: 18em;
+width: 18em; /*180px*/
+min-height: 1em;
+}
+
+/*  em based containors - Used for middle column 2 or 3 column layout
+----------------------------------------------------------*/
+
+.colmiddle {width: 50.9em; padding:0 .6em 0 .6em;} /*509px*/
+
+.colmiddle780 {width: 78em; padding:2em 0em 0em 0em;} /*780px*/
+
+/* %based containors
+----------------------------------------------------------*/
+.content100 {width: 100%;} /*100%*/
+
+.content75 {width: 75%;} /*75%*/
+
+.content60 {width: 60%;} /*60%*/
+
+.content50 {width: 50%;} /*50%*/
+
+.content48 {width: 48%;} /*48% - For those times when 50/50 just dosen't work ;O)*/
+
+.content45 {width: 45%;} /*45%*/
+
+.content40 {width: 40%;} /*40%*/
+
+.content33 {width: 33%;} /*33%*/
+
+.content25 {width: 25%;} /*25%*/
+
+/* Right column
+----------------------------------------------------------*/
+
+.colright {width: 24.8em; padding: 0em .6em 0em 0em;}
+
+/* Top navigation pane
+----------------------------------------------------------*/
+
+ul.topNav
+{
+	margin:0;
+	padding:0;
+	list-style:none;
+	float:left;
+	font-size: 1.3em;
+}
+
+ul.topNav li
+{
+	float:left;
+	/*background:url(../../images/themes/autumn/TopNavDivider.gif) no-repeat top right;*/
+}
+
+ul.topNav li a
+{
+	display:block;
+	padding:.4em 1.4em .2em 1.4em;
+	text-decoration:none;
+	float:left;
+}
+
+
+/* Left navigation modules
+----------------------------------------------------------*/
+
+.leftnavMod {margin:1.2em 0em 1em 1em;}
+
+/* Main widgets
+----------------------------------------------------------*/
+
+.prodWidget {padding:1em 0em;}
+
+.prodItem {text-align:center; width:33%;}
+
+.prodText {width:66%;}
+
+/* Sidebar widgets
+----------------------------------------------------------*/
+
+.sidebarWidget {padding:.5em; margin:0em 0em 1em 0em; border: 1px #dbe0db solid;}
+
+.sidebarContent {margin:1.8em .5em; background:#FFF;}
+
+
+/* Extensions
+----------------------------------------------------------*/
+
+.fltleft {float: left;} /*Use this class to float anything to the left*/
+
+.fltright {float: right;}  /*Use this class to float anything to the left*/
+
+.cntr {margin:0 auto;}  /*Center*/
+
+.clearLayout {clear:both;}  /*Use this class clear layout*/
+
+.disabled {color:#CCC;}
+
+.alert {color:#FF0000;}
+
+.font2 {font-family:"Comic Sans MS";}
+
+
+/* Backgrounds
+----------------------------------------------------------*/
+.bkgrnd1 {background:url(images/bkgnd_header.gif) repeat-x top left #557190;} /*Currently used in header2*/
+.bkgrnd2 {background:url(images/bkgnd_navgradient.gif) repeat-x bottom left #e2e7e0;} /*Currently used in header3*/
+.bkgrnd3 {background:url(images/bkgnd_SideNavgradient.gif) repeat-y top left;} /*Left nav background - applied to bdy*/
+.bkgrnd4 {background:url(images/bkgnd_sideWidgetGradient.gif) repeat-x top right #FFF;} /*Widget background - used in sidebarWidget*/
+
+
+
+
+

@@ -1,0 +1,471 @@
+﻿<#@ template language="C#v3.5" debug="True" hostspecific="True" #>
+<#@ include file="SQLServer.ttinclude" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using SubSonic.Extensions;
+using System.Linq.Expressions;
+using SubSonic.Schema;
+using System.Collections;
+using SubSonic;
+using System.ComponentModel;
+using System.Data.Common;
+
+namespace <#=Namespace #>
+{
+<#
+
+    var tables = LoadTables();
+
+    foreach(Table tbl in tables)
+    {
+	    if(!ExcludeTables.Contains(tbl.Name))
+        {
+#>
+    
+    
+    /// <summary>
+    /// A class which represents the <#=tbl.Name #> table in the <#=DatabaseName#> Database.
+    /// </summary>
+    public partial class <#=tbl.ClassName#>: IActiveRecord
+    {
+    
+        #region Built-in testing
+        static IList<<#=tbl.ClassName#>> TestItems;
+        static TestRepository<<#=tbl.ClassName#>> _testRepo;
+        
+        static void SetTestRepo(){
+            _testRepo = _testRepo ?? new TestRepository<<#=tbl.ClassName#>>(new <#=Namespace#>.<#=DatabaseName#>DB());
+        }
+        public static void ResetTestRepo(){
+            _testRepo = null;
+            SetTestRepo();
+        }
+        public static void Setup(List<<#=tbl.ClassName#>> testlist){
+            SetTestRepo();
+            _testRepo._items = testlist;
+        }
+        public static void Setup(<#=tbl.ClassName#> item) {
+            SetTestRepo();
+            _testRepo._items.Add(item);
+        }
+        public static void Setup(int testItems) {
+            SetTestRepo();
+            for(int i=0;i<testItems;i++){
+                <#=tbl.ClassName#> item=new <#=tbl.ClassName#>();
+                _testRepo._items.Add(item);
+            }
+        }
+        
+        public bool TestMode {
+            get {
+                return this._db.DataProvider.ConnectionString.Equals("test", StringComparison.InvariantCultureIgnoreCase);
+            }
+        }
+
+        #endregion
+
+        IRepository<<#=tbl.ClassName#>> _repo;
+        ITable tbl;
+        bool _isNew;
+        public bool IsNew(){
+            return _isNew;
+        }
+        public void SetIsNew(bool isNew){
+            _isNew=isNew;
+        }
+        bool _isLoaded;
+        public bool IsLoaded(){
+            return _isLoaded;
+        }
+                
+        List<IColumn> _dirtyColumns;
+        public bool IsDirty(){
+            return _dirtyColumns.Count>0;
+        }
+        
+        public List<IColumn> GetDirtyColumns (){
+            return _dirtyColumns;
+        }
+
+        <#=Namespace#>.<#=DatabaseName#>DB _db;
+        public <#=tbl.ClassName#>() {
+             _db=new <#=Namespace#>.<#=DatabaseName#>DB();
+            _dirtyColumns=new List<IColumn>();
+            
+            if(TestMode){
+                <#=tbl.ClassName#>.SetTestRepo();
+                _repo=_testRepo;
+            }else{
+                _repo = new SubSonicRepository<<#=tbl.ClassName#>>(_db);
+            }
+            tbl=_repo.GetTable();
+            _isNew = true;
+            OnCreated();
+        }
+        
+       
+        partial void OnCreated();
+            
+        partial void OnLoaded();
+        
+        partial void OnSaved();
+        
+        partial void OnChanged();
+        
+        public IList<IColumn> Columns{
+            get{
+                return tbl.Columns;
+            }
+        }
+        
+        public <#=tbl.ClassName#>(object key):this() {
+            _isLoaded=_repo.Load(this,this.KeyName(),key);
+            if(_isLoaded)
+                OnLoaded();
+
+        }
+
+        public <#=tbl.ClassName#>(Expression<Func<<#=tbl.ClassName#>, bool>> expression):this() {
+            _isLoaded=_repo.Load(this,expression);
+            if(_isLoaded)
+                OnLoaded();
+        }
+        
+        public static SubSonic.Query.SqlQuery Select{
+            get{
+                var db=new <#=Namespace#>.<#=DatabaseName#>DB();
+                return db.Select.From<<#=tbl.ClassName#>>();
+            }
+        }
+        public static SubSonic.Query.SqlQuery SelectColumns(params string[] columns){
+            var db=new <#=Namespace#>.<#=DatabaseName#>DB();
+            return new SubSonic.Query.Select(db.DataProvider, columns).From<<#=tbl.ClassName#>>();
+        }
+        internal static IRepository<<#=tbl.ClassName#>> GetRepo(){
+            var db=new <#=Namespace#>.<#=DatabaseName#>DB();
+            IRepository<<#=tbl.ClassName#>> _repo;
+            
+            if(db.TestMode){
+                <#=tbl.ClassName#>.SetTestRepo();
+                _repo=_testRepo;
+            }else{
+                _repo = new SubSonicRepository<<#=tbl.ClassName#>>(db);
+            }
+            return _repo;
+        }
+        
+        public static <#=tbl.ClassName#> SingleOrDefault(Expression<Func<<#=tbl.ClassName#>, bool>> expression) {
+           
+            var single= All().SingleOrDefault(expression);
+            if (single != null)
+                single.OnLoaded();
+            return single;
+        }      
+        public static bool Exists(Expression<Func<<#=tbl.ClassName#>, bool>> expression) {
+           
+            return All().Any(expression);
+        }        
+        public static IList<<#=tbl.ClassName#>> Find(Expression<Func<<#=tbl.ClassName#>, bool>> expression) {
+           
+            return GetRepo().Find(expression).ToList();
+        }
+        public static IQueryable<<#=tbl.ClassName#>> All() {
+            return GetRepo().GetAll();
+        }
+        public static PagedList<<#=tbl.ClassName#>> GetPaged<TKey>(Func<<#=tbl.ClassName#>,TKey> orderby, int pageIndex, int pageSize){
+            return GetRepo().GetPaged(orderby, pageIndex, pageSize);
+        }
+        public static PagedList<<#=tbl.ClassName#>> GetPaged<TKey>(string sortBy, int pageIndex, int pageSize) {
+            return GetRepo().GetPaged(sortBy, pageIndex, pageSize);
+        }
+        public static PagedList<<#=tbl.ClassName#>> GetPaged<TKey>(int pageIndex, int pageSize) {
+            return GetRepo().GetPaged(pageIndex, pageSize);
+            
+        }
+
+        public string KeyName()
+        {
+            return "<#=tbl.PK.CleanName #>";
+        }
+
+        public object KeyValue()
+        {
+            return this.<#=tbl.PK.CleanName#>;
+        }
+        
+        public void SetKeyValue(object value) {
+            if (value != null) {
+                var settable = value.ChangeTypeTo<<#=tbl.PK.SysType#>>();
+                this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
+            }
+        }
+        
+        public override string ToString(){
+            return this.<#=tbl.Descriptor.CleanName #>.ToString();
+        }
+
+        public override bool Equals(object obj){
+            if(obj.GetType()==typeof(<#=tbl.ClassName#>)){
+                <#=tbl.ClassName#> compare=(<#=tbl.ClassName#>)obj;
+                <#=tbl.PK.SysType#> thisPk=(<#=tbl.PK.SysType#>)this.KeyValue();
+                <#=tbl.PK.SysType#> comparePk=(<#=tbl.PK.SysType#>)compare.KeyValue();
+                return thisPk.Equals(comparePk);
+            }else{
+                return base.Equals(obj);
+            }
+        }
+
+        public string DescriptorValue()
+        {
+            return this.<#=tbl.Descriptor.CleanName #>.ToString();
+        }
+
+        public string DescriptorColumn() {
+            return "<#=tbl.Descriptor.CleanName #>";
+        }
+        
+        public static string GetDescriptorColumn()
+        {
+            return "<#=tbl.Descriptor.CleanName #>";
+        }
+        
+        #region ' Foreign Keys '
+<#
+            List<string> fkCreated = new List<string>();
+            foreach(FKTable fk in tbl.FKTables)
+            { 
+                
+                if(!ExcludeTables.Contains(fk.OtherTable)){
+                    string propName=fk.OtherQueryable;
+                    if(fkCreated.Contains(propName))
+                        propName=fk.OtherQueryable+fkCreated.Count.ToString();
+                    
+                    fkCreated.Add(fk.OtherQueryable);
+                    
+               
+#>
+        IList<<#=fk.OtherClass #>> _<#=propName #>;
+        public IList<<#=fk.OtherClass #>> <#=propName #>
+        {
+            get
+            {
+                
+                  if(_<#=propName #>==null){
+                      var repo=<#=fk.OtherClass#>.GetRepo();
+                  
+                       _<#=propName #> = (from items in repo.GetAll()
+                           where items.<#=fk.OtherColumn#> == _<#=fk.ThisColumn#>
+                           select items).ToList();
+                   }
+                  return _<#=propName #>;
+            }
+            set{
+                _<#=propName #>=value;
+            }
+        }
+
+<#
+                }
+            }
+            
+#>
+        #endregion
+        
+
+<#
+            foreach(Column col in tbl.Columns)
+            {
+#>
+        <#=col.SysType #><#=CheckNullable(col)#> _<#=col.CleanName #>;
+        public <#=col.SysType #><#=CheckNullable(col)#> <#=col.CleanName #>
+        {
+            get { return _<#=col.CleanName #>; }
+            set
+            {
+                
+                _<#=col.CleanName #>=value;
+                var col=tbl.Columns.SingleOrDefault(x=>x.Name=="<#=col.Name #>");
+                if(col!=null){
+                    if(!_dirtyColumns.Contains(col) && _isLoaded){
+                        _dirtyColumns.Add(col);
+                    }
+                }
+                OnChanged();
+            }
+        }
+
+<#
+            }
+#>
+
+
+        public DbCommand GetUpdateCommand() {
+<#if(tbl.Columns.Any(x=>x.Name.ToLower()=="modifiedon")){#>
+            if (!_dirtyColumns.Any(x => x.Name.ToLower() == "modifiedon")) {
+               this.<#=tbl.Columns.Single(x=>x.Name.ToLower()=="modifiedon").CleanName#>=DateTime.Now;
+            }            
+<#}#>
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return _repo.BuildUpdateQuery(this).GetCommand().ToDbCommand();
+            
+        }
+        public DbCommand GetInsertCommand() {
+ 
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+        }
+        
+        public DbCommand GetDeleteCommand() {
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return _repo.BuildDeleteQuery(this).GetCommand().ToDbCommand();
+        }
+        //persistence
+        public void Save(){
+            Save("");
+        }
+        
+        public void Update(string userName){
+<#if(tbl.Columns.Any(x=>x.Name=="ModifiedBy")){#>
+            this.ModifiedBy=userName;
+<#}#>
+<#if(tbl.Columns.Any(x=>x.Name=="ModifiedOn")){#>
+            this.ModifiedOn=DateTime.Now;
+<#}#>
+            _repo.Update(this);
+            OnSaved();
+       }
+        
+        public void Add(string userName){
+<#if(tbl.Columns.Any(x=>x.Name=="CreatedOn")){#>
+            
+            this.CreatedOn=DateTime.Now;
+<#}#>
+<#if(tbl.Columns.Any(x=>x.Name=="CreatedBy")){#>
+            this.CreatedBy=userName;
+<#}#>
+<#if(tbl.Columns.Any(x=>x.Name=="ModifiedOn")){#>
+            this.ModifiedOn=DateTime.Now;
+<#}#>
+<#if(tbl.Columns.Any(x=>x.Name=="ModifiedBy")){#>
+            this.ModifiedBy=userName;
+<#}#>
+            this.SetKeyValue(_repo.Add(this));
+            OnSaved();
+        }
+        
+        public void Save(string userName) {
+            
+           
+            if (_isNew) {
+                Add(userName);
+                
+            } else {
+                Update(userName);
+            }
+            
+        }
+
+        public void Delete() {
+            <#if(tbl.HasLogicalDelete()){#>
+             
+             this.<#=tbl.DeleteColumn.CleanName#>=true;
+            _repo.Update(this);
+                
+            <#}else{#>       
+                 
+            _repo.Delete(KeyValue());
+            
+            <#}#>
+        }
+
+        public static void Delete(object key) {
+        
+            var repo = new SubSonicRepository<<#=tbl.ClassName#>>(new <#=Namespace#>.<#=DatabaseName#>DB());
+
+            <#if(tbl.HasLogicalDelete()){#>
+            
+            var item=new <#=tbl.ClassName#>(key);
+            item.<#=tbl.DeleteColumn.CleanName#>=true;
+            repo.Update(item);
+                
+            <#}else{#>       
+                 
+            repo.Delete(key);
+            
+            <#}#>
+            
+        }
+
+        public static void Delete(Func<<#=tbl.ClassName#>, bool> expression) {
+            var repo = GetRepo();
+            
+            <#if(tbl.HasLogicalDelete()){#>
+            
+            List<<#=tbl.ClassName#>> items=repo.GetAll().Where(expression).ToList();
+            items.ForEach(x=>x.<#=tbl.DeleteColumn.CleanName#>=true);
+            repo.Update(items);
+            
+            <#}else{#>       
+            
+            repo.Delete(expression);
+            
+            <#}#>
+        }
+
+        <#if(tbl.HasLogicalDelete()){#>
+        
+        public static void Destroy(Func<<#=tbl.ClassName#>, bool> expression) {
+            var repo = GetRepo();
+            repo.Delete(expression);
+        }
+        public static void Destroy(object key) {
+        
+            var repo = GetRepo();
+            repo.Delete(key);
+            
+        }        
+        
+        public void Destroy() {
+            _repo.Delete(KeyValue());
+        }        
+        
+        <#}#>
+
+
+        public void Load(IDataReader rdr) {
+            Load(rdr, true);
+        }
+        public void Load(IDataReader rdr, bool closeReader) {
+            if (rdr.Read()) {
+
+                try {
+                    rdr.Load(this);
+                    _isNew = false;
+                    _isLoaded = true;
+                } catch {
+                    _isLoaded = false;
+                    throw;
+                }
+            }else{
+                _isLoaded = false;
+            }
+
+            if (closeReader)
+                rdr.Dispose();
+        }
+        
+
+    } 
+<#        }
+    }
+#>
+}

@@ -1,0 +1,103 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title>Orchard</title>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <asp:PlaceHolder runat="server" id="metas">
+    <%=Html.Metas(this.SiteData()) %>    
+    </asp:PlaceHolder>
+    <link rel="stylesheet" type="text/css" href="site.css" />
+    
+    <script type="text/javascript" src="/scripts/jquery-1.2.6.js"></script>
+    <style type="text/css">@import "/scripts/calendar/jquery.datepick.css";</style> 
+    <script type="text/javascript" src="/scripts/calendar/jquery.datepick.js"></script>
+    
+</head>
+<body>
+<!--Header-->
+<div id="header">
+    <div id="innerheader">
+    <!--Left side branding -->
+    <div id="branding"><h1>Orchard</h1></div>
+    <!--Right side logIn -->
+    <div id="login">Da Kine | Log out<!-- | Settings --></div>
+    </div>
+</div>
+
+<!--Top Navigation would go here-->
+<div id="topNavOutter">
+    <div id="topNavInner">
+        <ul>
+        <li><a href="/">Site</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="wrapper">
+    <div id="content">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+<!--Left Navigation-->
+    <div id="leftNav">
+        <div class="leftNavMod">
+        <h2>Site Settings</h2>
+        <ul>
+          <li><a title="" href="<%=Url.Action("Index","Site") %>">Dashboard</a></li> 
+          <li class="active"><a title="" href="<%=Url.Action("Config","Site") %>">Configuration</a></li> 
+          <li><a title="" href="<%=Url.Action("Index","Plugins") %>">Plugins</a></li> 
+          <li><a title="" href="<%=Url.Action("Index","Theme") %>">Themes</a></li> 
+          <li><a title="" href="#">Users</a></li> 
+          <li><a title="" href="#">Localization</a></li> 
+        </ul>
+        </div>
+
+        <div class="leftNavMod">
+        <h2>Orders</h2>
+        <ul>
+          <li><a title="" href="#">New Orders</a></li>
+          <li><a title="" href="#">Find an Order</a> </li>
+        </ul>
+        </div>
+
+        <div class="leftNavMod">
+        <h2>Catalog</h2>
+        <ul>
+          <li><a title="" href="#">Products</a></li>
+          <li><a title="" href="#">Categories</a></li>
+        </ul>
+        </div>
+
+        <div class="leftNavMod">
+            <h2>Sales</h2>
+            <ul>
+              <li><a title="" href="#">Campaigns</a></li>
+              <li><a title="" href="#">Coupons</a></li>
+              <li><a title="" href="#">Gift Certificates</a></li>
+            </ul>
+        </div>
+
+        <div class="leftNavMod">
+        <h2>Reports</h2>
+        <ul>
+        <li><a title="" href="#">Product Interest</a></li>
+        <li><a title="" href="#">Purchasing Overview</a></li>
+        <li><a title="" href="#">Stock Levels</a></li> 
+        <li><a title="" href="#">Referalls</a></li>
+        <li><a title="" href="#">Campaign Summary</a></li>
+        </ul>
+        </div>
+    <!--End outter div for left navigation -->
+    </div>
+
+</div>
+<p>&copy; 2009 Microsoft Corporation. All rights reserved.</p>
+
+</body>
+
+</html>

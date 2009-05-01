@@ -1,0 +1,13 @@
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\Kona.Web.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\Kona.Web.pdb
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\Kona.Infrastructure.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\Microsoft.Web.Mvc.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\StructureMap.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\Kona.Infrastructure.pdb
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\obj\Debug\ResolveAssemblyReference.cache
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\obj\Debug\Kona.Web.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\obj\Debug\Kona.Web.pdb
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\SubSonic.Core.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\SubSonic.Core.pdb
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\SubSonic.Core.xml
+D:\@Microsoft\Kona_MVCSamples\Kona.Web\bin\DotNetOpenAuth.dll
