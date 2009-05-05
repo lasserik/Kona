@@ -22,6 +22,10 @@ namespace Kona.Data {
 
                 address.Add(address.UserName);
 
+            } else {
+                address = Address.SingleOrDefault(x => x.UserName == address.UserName &&
+                x.Street1 == address.Street1 &&
+                x.StateOrProvince == address.StateOrProvince);
             }
 
             return address;

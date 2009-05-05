@@ -17,8 +17,8 @@ namespace Kona.Web.Plugins {
             //pop them into the TransactionErrors on the Transaction object
             //for display to the end user
             string authCode = System.Guid.NewGuid().ToString().Substring(0, 10);
-            
-            Transaction t = new Transaction(order.OrderID, order.Total, authCode, "FakePaymentGateway");
+
+            Transaction t = Transaction.CreateTransaction(order, authCode, "FakePaymentGateway");
 
             return t;
 

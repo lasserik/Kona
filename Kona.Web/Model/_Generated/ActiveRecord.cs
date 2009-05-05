@@ -68,6 +68,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -152,8 +155,11 @@ namespace Kona.Data
         public static DeliveryMethod SingleOrDefault(Expression<Func<DeliveryMethod, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<DeliveryMethod, bool>> expression) {
@@ -439,6 +445,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -523,8 +532,11 @@ namespace Kona.Data
         public static Customer SingleOrDefault(Expression<Func<Customer, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Customer, bool>> expression) {
@@ -924,6 +936,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -1008,8 +1023,11 @@ namespace Kona.Data
         public static TaxRate SingleOrDefault(Expression<Func<TaxRate, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<TaxRate, bool>> expression) {
@@ -1329,6 +1347,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -1413,8 +1434,11 @@ namespace Kona.Data
         public static PageStatus SingleOrDefault(Expression<Func<PageStatus, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<PageStatus, bool>> expression) {
@@ -1718,6 +1742,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -1802,8 +1829,11 @@ namespace Kona.Data
         public static CustomerBehavior SingleOrDefault(Expression<Func<CustomerBehavior, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<CustomerBehavior, bool>> expression) {
@@ -2089,6 +2119,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -2173,8 +2206,11 @@ namespace Kona.Data
         public static Address SingleOrDefault(Expression<Func<Address, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Address, bool>> expression) {
@@ -2716,6 +2752,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -2800,8 +2839,11 @@ namespace Kona.Data
         public static CategoryLocalized SingleOrDefault(Expression<Func<CategoryLocalized, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<CategoryLocalized, bool>> expression) {
@@ -3159,6 +3201,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -3243,8 +3288,11 @@ namespace Kona.Data
         public static Categories_Product SingleOrDefault(Expression<Func<Categories_Product, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Categories_Product, bool>> expression) {
@@ -3550,6 +3598,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -3634,8 +3685,11 @@ namespace Kona.Data
         public static CategoryImage SingleOrDefault(Expression<Func<CategoryImage, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<CategoryImage, bool>> expression) {
@@ -3957,6 +4011,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -4041,8 +4098,11 @@ namespace Kona.Data
         public static Products_CrossSell SingleOrDefault(Expression<Func<Products_CrossSell, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Products_CrossSell, bool>> expression) {
@@ -4348,6 +4408,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -4432,8 +4495,11 @@ namespace Kona.Data
         public static Products_Related SingleOrDefault(Expression<Func<Products_Related, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Products_Related, bool>> expression) {
@@ -4739,6 +4805,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -4823,8 +4892,11 @@ namespace Kona.Data
         public static ProductImage SingleOrDefault(Expression<Func<ProductImage, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<ProductImage, bool>> expression) {
@@ -5146,6 +5218,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -5230,8 +5305,11 @@ namespace Kona.Data
         public static ProductDescriptor SingleOrDefault(Expression<Func<ProductDescriptor, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<ProductDescriptor, bool>> expression) {
@@ -5589,6 +5667,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -5673,8 +5754,11 @@ namespace Kona.Data
         public static InventoryRecord SingleOrDefault(Expression<Func<InventoryRecord, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<InventoryRecord, bool>> expression) {
@@ -6014,6 +6098,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -6098,8 +6185,11 @@ namespace Kona.Data
         public static Transaction SingleOrDefault(Expression<Func<Transaction, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Transaction, bool>> expression) {
@@ -6475,6 +6565,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -6559,8 +6652,11 @@ namespace Kona.Data
         public static Page SingleOrDefault(Expression<Func<Page, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Page, bool>> expression) {
@@ -7170,6 +7266,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -7254,8 +7353,11 @@ namespace Kona.Data
         public static Widgets_Product SingleOrDefault(Expression<Func<Widgets_Product, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Widgets_Product, bool>> expression) {
@@ -7579,6 +7681,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -7663,8 +7768,11 @@ namespace Kona.Data
         public static Widgets_Group SingleOrDefault(Expression<Func<Widgets_Group, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Widgets_Group, bool>> expression) {
@@ -7970,6 +8078,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -8054,8 +8165,11 @@ namespace Kona.Data
         public static CustomerEvent SingleOrDefault(Expression<Func<CustomerEvent, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<CustomerEvent, bool>> expression) {
@@ -8469,6 +8583,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -8553,8 +8670,11 @@ namespace Kona.Data
         public static ProductOptionDisplay SingleOrDefault(Expression<Func<ProductOptionDisplay, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<ProductOptionDisplay, bool>> expression) {
@@ -8840,6 +8960,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -8924,8 +9047,11 @@ namespace Kona.Data
         public static Widget SingleOrDefault(Expression<Func<Widget, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Widget, bool>> expression) {
@@ -9495,6 +9621,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -9579,8 +9708,11 @@ namespace Kona.Data
         public static ProductOption SingleOrDefault(Expression<Func<ProductOption, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<ProductOption, bool>> expression) {
@@ -9960,6 +10092,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -10044,8 +10179,11 @@ namespace Kona.Data
         public static ProductOptionValue SingleOrDefault(Expression<Func<ProductOptionValue, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<ProductOptionValue, bool>> expression) {
@@ -10369,6 +10507,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -10453,8 +10594,11 @@ namespace Kona.Data
         public static Products_Option SingleOrDefault(Expression<Func<Products_Option, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Products_Option, bool>> expression) {
@@ -10798,6 +10942,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -10882,8 +11029,11 @@ namespace Kona.Data
         public static CartItem SingleOrDefault(Expression<Func<CartItem, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<CartItem, bool>> expression) {
@@ -11261,6 +11411,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -11345,8 +11498,11 @@ namespace Kona.Data
         public static OrderItem SingleOrDefault(Expression<Func<OrderItem, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<OrderItem, bool>> expression) {
@@ -11760,6 +11916,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -11844,8 +12003,11 @@ namespace Kona.Data
         public static Product SingleOrDefault(Expression<Func<Product, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Product, bool>> expression) {
@@ -12607,6 +12769,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -12691,8 +12856,11 @@ namespace Kona.Data
         public static Order SingleOrDefault(Expression<Func<Order, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Order, bool>> expression) {
@@ -13371,6 +13539,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -13455,8 +13626,11 @@ namespace Kona.Data
         public static ShippingMethod SingleOrDefault(Expression<Func<ShippingMethod, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<ShippingMethod, bool>> expression) {
@@ -13812,6 +13986,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -13896,8 +14073,11 @@ namespace Kona.Data
         public static Category SingleOrDefault(Expression<Func<Category, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<Category, bool>> expression) {
@@ -14277,6 +14457,9 @@ namespace Kona.Data
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -14361,8 +14544,11 @@ namespace Kona.Data
         public static InventoryStatus SingleOrDefault(Expression<Func<InventoryStatus, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<InventoryStatus, bool>> expression) {

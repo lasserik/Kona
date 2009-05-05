@@ -18,7 +18,9 @@ namespace Kona.Web.Controllers {
 
         }
 
-
+        public ActionResult Login() {
+            return View("Login");
+        }
         public ActionResult Index(string slug) {
 
             slug = slug ?? "";

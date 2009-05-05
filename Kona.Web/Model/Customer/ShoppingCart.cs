@@ -47,16 +47,21 @@ namespace Kona.Data {
 
         public void Save() {
 
+            bool shouldSave = false;
             //get the user's current, unchecked out order
             var order = Order.FindCurrentOrCreateNew(UserName);
 
             
             //save any address or shipping changes
-            if(this.ShippingAddress!=null)
+            if (this.ShippingAddress != null) {
                 order.ShippingAddressID = this.ShippingAddress.AddressID;
-            
-            if (this.BillingAddress != null)
+
+            }
+
+            if (this.BillingAddress != null) {
                 order.BillingAddressID = this.BillingAddress.AddressID;
+                shouldSave = true;
+            }
 
             if(this.ShippingMethodID >0){
                 order.ShippingAmount = this.ShippingAmount;

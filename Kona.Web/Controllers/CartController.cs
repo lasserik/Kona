@@ -14,6 +14,7 @@ namespace Kona.Web.Controllers {
 
         public CartController() {
             this.CurrentCustomer = Customer.GetExistingOrCreate(this.GetCommerceUserName());
+            this.SiteData = KonaSite.GetSite("/");
         }
 
         public ActionResult Index() {

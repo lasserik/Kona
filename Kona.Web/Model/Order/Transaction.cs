@@ -7,11 +7,15 @@ namespace Kona.Data {
     public partial class Transaction {
 
         public IList<string> TransactionErrors { get; set; }
-        public Transaction(Guid orderID, decimal total, string authCode, string processor) {
-            this.OrderID = orderID;
-            this.Amount = total;
-            this.AuthorizationCode = authCode;
-            this.Processor = processor;
+        public static Transaction CreateTransaction(Order order, string authCode, string processor) {
+            Transaction result=new Transaction();
+            result.OrderID = order.OrderID;
+            result.Amount = order.Total;
+            result.AuthorizationCode = authCode;
+            result.Processor = processor;
+            result.TransactionDate = DateTime.Now;
+            result.TransactionID = Guid.NewGuid();
+            return result;
         }
     }
 }

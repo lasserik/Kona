@@ -19,7 +19,6 @@ namespace Kona.Web.Controllers
         // GET: /Page/
 
         public PageController() {
-
         }
 
         public ActionResult New() {
@@ -91,6 +90,8 @@ namespace Kona.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(string id) {
              //pull the page and widgets
+            this.SiteData = KonaSite.GetSite("/");
+            this.CurrentCustomer = Customer.GetExistingOrCreate(this.GetCommerceUserName());
             var pg = new Page(new Guid(id));
             if (pg != null) {
                 return View("EditPage",pg);
@@ -101,6 +102,8 @@ namespace Kona.Web.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Page page) {
+            this.SiteData = KonaSite.GetSite("/");
+            this.CurrentCustomer = Customer.GetExistingOrCreate(this.GetCommerceUserName());
 
             if (page != null) {
                 page.ModifiedBy = User.Identity.Name;
@@ -198,8 +201,8 @@ namespace Kona.Web.Controllers
         public ActionResult RenderWidget(string id) {
             Guid widgetID = new Guid(id);
             Widget widget = new Widget(widgetID);
-
-            return View(widget.WidgetDefinition+"Edit", widget);
+            widget.LoadProducts();
+            return View(widget.WidgetDefinition+"Editor", widget);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

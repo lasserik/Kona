@@ -26,7 +26,7 @@ using Kona.Infrastructure;
             return SitePages(pg.Page as ViewPage);
         }
         public static IList<Page> SitePages(this ViewPage pg) {
-            IList<Page> result = null;
+            IList<Page> result = new List<Page>() ;
             if (pg.ViewData["SitePages"] != null) {
                 result = (IList<Page>)pg.ViewData["SitePages"];
             }

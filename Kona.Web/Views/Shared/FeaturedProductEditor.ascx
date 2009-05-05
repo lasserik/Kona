@@ -1,7 +1,7 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Widget<IList<Product>>>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Widget>" %>
 
 <% 
-string sku=Model.Data.Count>0 ? Model.Data[0].SKU : "";
+    string sku = Model.Products.Count > 0 ? Model.Products[0].SKU : "";
 %>
 
 <script type="text/javascript">

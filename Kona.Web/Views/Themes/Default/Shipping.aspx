@@ -12,7 +12,7 @@
     
       <%if (User.Identity.IsAuthenticated) { %>
       <div class="addressBook">
-        <%foreach (Address add in this.CurrentCustomer().AddressBook) { %>
+        <%foreach (Kona.Data.Address add in this.CurrentCustomer().Addresses) { %>
             <%using(Html.BeginForm()){ %>
             
             <input type="hidden" name="id" value="<%=add.AddressID %>" />

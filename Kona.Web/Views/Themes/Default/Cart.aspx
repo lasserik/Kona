@@ -39,14 +39,14 @@
         <%foreach (ShoppingCartItem item in this.CurrentCart().Items) { %>
             <tr>
                 <td>
-                    <img src="<%=Html.ProductImage(item.Product.DefaultImage.ThumbnailPhoto) %>" alt="<%=item.Product.Name %>" width="80" height="80" />
+                    <img src="<%=Html.ProductImage(item.Product.DefaultImageFile) %>" alt="<%=item.Product.ProductName %>" width="80" height="80" />
                 </td>
                 <td>
-                    <a href="<%=Url.Action("Show","Home",new{sku=item.Product.SKU}) %>"><%=item.Product.Name%></a><br />
+                    <a href="<%=Url.Action("Show","Home",new{sku=item.Product.SKU}) %>"><%=item.Product.ProductName%></a><br />
                     Added on <%=item.DateAdded.ToString()%>
                 </td>
                 <td>
-                    <%= item.Product.Price.ToString("C") %>
+                    <%= item.Product.BasePrice.ToString("C") %>
                 </td>
                 <td>
                     <%using (Html.BeginForm("UpdateItem", "Cart")) {%>

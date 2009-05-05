@@ -14,6 +14,8 @@ namespace Kona.Web.Controllers {
 
         public OrderController(IPluginEngine pluginEngine) {
             _pluginEngine = pluginEngine;
+            this.CurrentCustomer = Customer.GetExistingOrCreate(this.GetCommerceUserName());
+            this.SiteData = KonaSite.GetSite("/");
         }
 
         public ActionResult Index() {
@@ -94,8 +96,7 @@ namespace Kona.Web.Controllers {
             if (ModelState.IsValid) {
 
                 //save the address
-                Kona.Data.Address.SaveIfNotExists(address);
-                this.CurrentCart.ShippingAddress = address;
+                this.CurrentCart.ShippingAddress = Address.SaveIfNotExists(address);
 
                 //calc the tax
                 this.CurrentCart.TaxAmount = _pluginEngine.CalculateTax(this.SiteData.TaxPlugin, this.CurrentCart);
@@ -130,9 +131,7 @@ namespace Kona.Web.Controllers {
             if (ModelState.IsValid) {
 
                 //save the address
-                //address.AddressID = _customerRepository.SaveAddress(address);
-
-                this.CurrentCart.BillingAddress = address;
+                this.CurrentCart.BillingAddress = Address.SaveIfNotExists(address); ;
 
                 //set the shipping methods
                 this.ShippingMethods = _pluginEngine.CalculateShipping(this.SiteData.ShippingPlugin, this.CurrentCart); ;
@@ -161,8 +160,8 @@ namespace Kona.Web.Controllers {
             this.CurrentCart.CreditCard = card;
 
             //create an order
-            //Order order = new Order(this.CurrentCustomer);
-            Order order = null;
+            Order order = Order.ReadyOrderForPayment(this.CurrentCustomer.UserName, card);
+            
             //validate what we have
             //TODO: - check boolean
             this.ValidateOrder(order);

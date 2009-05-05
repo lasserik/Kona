@@ -17,7 +17,7 @@
         <%using (Html.BeginForm("Finalize","Order")) { %>
             <%foreach (ShippingMethod m in this.ShippingMethods().OrderBy(x=>x.Cost)) { %>
                 
-                <input onclick="this.form.submit();" type="radio" value="<%=m.ID %>" name="id" <%=Html.IsChecked(m.ID, this.CurrentCart().ShippingMethodID)%>/> <%=m.Display %><br />
+                <input onclick="this.form.submit();" type="radio" value="<%=m.ShippingMethodID %>" name="id" <%=Html.IsChecked(m.ShippingMethodID, this.CurrentCart().ShippingMethodID)%>/> <%=m.Display %><br />
         
             <%} %>
         <%} %>
@@ -61,8 +61,8 @@
             <%foreach(ShoppingCartItem item in this.CurrentCart().Items){%>
             <tr>
                 <td ><%=item.Quantity %></td>
-                <td ><%=item.Product.Name%></td>
-                <td  align="right"><%=item.Product.Price.ToString("C")%></td>
+                <td ><%=item.Product.ProductName%></td>
+                <td  align="right"><%=item.Product.BasePrice.ToString("C")%></td>
                 <td  align="right"><%=item.LineTotal.ToString("C") %></td>
             </tr>
 
@@ -104,6 +104,6 @@
             <input type="submit" value="Place Order" />
         </div>
         <%} %>
-    </div>
-</div>
+  </div>
+
 </asp:Content>

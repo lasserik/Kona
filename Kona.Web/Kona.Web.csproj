@@ -92,7 +92,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\cs\Plugins\Order\SimpleOrderExecution.cs" />
+    <Content Include="App_Code\cs\Plugins\OrderPlugins\SimpleOrderExecution.cs" />
     <Content Include="App_Code\cs\Plugins\Email\FakeEmailer.cs" />
     <Compile Include="Controllers\OrderController.cs">
       <SubType>Code</SubType>
@@ -115,7 +115,7 @@
     <Compile Include="Infrastructure\MVC\KonaController.cs" />
     <Compile Include="Infrastructure\MVC\KonaControllerFactory.cs" />
     <Compile Include="Infrastructure\MVC\KonaViewEngine.cs" />
-    <Content Include="App_Code\cs\Plugins\Order\MVCOrderNumber.cs" />
+    <Content Include="App_Code\cs\Plugins\OrderPlugins\MVCOrderNumber.cs" />
     <Content Include="App_Code\cs\Plugins\Shipping\SimpleShippingCalculator.cs" />
     <Content Include="App_Code\cs\Plugins\Tax\USTaxCalculator.cs" />
     <Content Include="App_Code\cs\Plugins\Payment\FakePaymentGateway.cs" />
@@ -1560,6 +1560,7 @@
     <None Include="Scripts\edit_area\images\Thumbs.db" />
     <None Include="Views\Themes\Admin\images\themes\autumn\Thumbs.db" />
     <Content Include="Content\Images\Hiking_front.jpg" />
+    <Content Include="Content\openid.css" />
     <Content Include="Scripts\images\aol.gif" />
     <Content Include="Scripts\images\blogger.ico" />
     <Content Include="Scripts\images\claimid.ico" />
@@ -1579,7 +1580,6 @@
     <Content Include="Scripts\openid-jquery.js" />
     <Content Include="Views\Shared\EditPageHeader.ascx" />
     <Content Include="Views\Shared\FavoritesEdit.ascx" />
-    <Content Include="Views\Shared\FeaturedProductEdit.ascx" />
     <Content Include="Views\Shared\HtmlEdit.ascx" />
     <Content Include="Views\Shared\images\liveToolbar\closeGlyph.gif" />
     <Content Include="Views\Shared\images\liveToolbar\closeGlyphDown.gif" />
@@ -1595,11 +1595,6 @@
     <Content Include="Views\Shared\NewPage.ascx" />
     <Content Include="Views\Shared\NotFound.aspx" />
     <Content Include="Views\Shared\PageEditor.ascx" />
-    <Content Include="Views\Shared\ProductAdEdit.ascx" />
-    <Content Include="Views\Shared\ProductListEdit.ascx" />
-    <Content Include="Views\Shared\RecentlyViewedEdit.ascx" />
-    <Content Include="Views\Shared\TextOnlyEdit.ascx" />
-    <Content Include="Views\Shared\TitleAndTextEdit.ascx" />
     <Content Include="Views\Shared\Toolbar.ascx" />
     <Content Include="Views\Themes\Default\Billing.aspx" />
     <Content Include="Views\Themes\Default\Cart.aspx" />

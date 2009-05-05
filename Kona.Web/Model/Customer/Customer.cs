@@ -26,11 +26,16 @@ namespace Kona.Data {
 
                 var products = from p in Product.All()
                                join o in OrderItem.All() on p.SKU equals o.SKU
+                               where o.OrderID==existingOrder.OrderID
                                select p;
 
                 foreach (var item in existingOrder.OrderItems) {
                     this.Cart.AddItem(products.SingleOrDefault(x => x.SKU == item.SKU), item.Quantity, item.DateAdded);
                 }
+
+                this.Cart.ShippingAddress = existingOrder.ShippingAddress;
+                this.Cart.BillingAddress = existingOrder.BillingAddress;
+
             }
 
         }

@@ -1,4 +1,4 @@
-<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="Theme.Master" Inherits="System.Web.Mvc.ViewPage<Kona.Infrastructure.Page>" %>
+<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="Theme.Master" Inherits="System.Web.Mvc.ViewPage<Kona.Data.Page>" %>
 
 
 
@@ -19,7 +19,7 @@
         <span style="padding:5px; font-family:arial; font-size:14pt;font-weight:bold">Parent:</span>
         <select name="parentid" id="parentid">
             <option value="0">-- none --</option>
-           <%foreach (Kona.Infrastructure.Page pg in this.SitePages()) { %>
+           <%foreach (Kona.Data.Page pg in this.SitePages()) { %>
             <option value="<%=pg.PageID %>"><%=pg.Title %></option>
             <%} %>
         </select>
@@ -189,7 +189,7 @@
             //load em if ya got em
             foreach(var widget in Model.Widgets){
             %>
-                loadWidget('<%=widget.ID%>','<%=widget.Zone%>');
+                loadWidget('<%=widget.WidgetID%>','<%=widget.Zone%>');
             <%}%>
             
             $(".sidelistcontext").contextMenu({

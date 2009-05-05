@@ -25,7 +25,18 @@ namespace Kona.Data {
 
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
+        public static Order ReadyOrderForPayment(string userName, PaymentMethod payment) {
+            Order result = Order.SingleOrDefault(x => x.UserName == userName && x.OrderStatusID == (int)OrderStatus.NotCheckedOut);
+            if (result == null)
+                throw new InvalidOperationException("There is no Order in queue for " + userName);
+            
+            result.PaymentMethod = payment;
+            return result;
+
+
+        }
 
         public static Order FindCurrentOrCreateNew(string userName){
             

@@ -6,7 +6,27 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-  
+         <script type="text/javascript">
+            $(document).ready(function() {
+
+                $('#menulist').sortable({
+                    stop: function(event, ui) {
+                        orderPages();
+                    }
+                });
+            });
+            
+            function orderPages() {
+                var itemArray = new Array();
+                $('#menulist li').each(function(i, item) {
+                    itemArray[i] = item.id;
+                })
+                $.post("/page/sortpages/", {
+                    pageid:itemArray
+                });
+            }
+            
+        </script>
 <div id="bdy" class="bkgrnd3">
     <div class="colleft fltleft">
         <%this.RenderWidgets("sidebar1"); %>

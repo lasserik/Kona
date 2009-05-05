@@ -76,6 +76,9 @@ namespace <#=Namespace #>
         public void SetIsNew(bool isNew){
             _isNew=isNew;
         }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
         bool _isLoaded;
         public bool IsLoaded(){
             return _isLoaded;
@@ -160,8 +163,11 @@ namespace <#=Namespace #>
         public static <#=tbl.ClassName#> SingleOrDefault(Expression<Func<<#=tbl.ClassName#>, bool>> expression) {
            
             var single= All().SingleOrDefault(expression);
-            if (single != null)
+            if (single != null){
                 single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
             return single;
         }      
         public static bool Exists(Expression<Func<<#=tbl.ClassName#>, bool>> expression) {
