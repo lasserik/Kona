@@ -43,11 +43,11 @@
                 <th style="text-align:right"><b>Total</b></th>
             </tr>
             </thead>
-            <%foreach(OrderLine item in Model.Items){%>
+            <%foreach(OrderItem item in Model.OrderItems){%>
             <tr>
                 <td ><%=item.Quantity %></td>
-                <td ><%=item.Item.Name%></td>
-                <td  align="right"><%=item.Item.Price.ToString("C")%></td>
+                <td ><%=item.Item.ProductName%></td>
+                <td  align="right"><%=item.Item.BasePrice.ToString("C")%></td>
                 <td  align="right"><%=item.LineTotal.ToString("C") %></td>
             </tr>
 

@@ -382,7 +382,7 @@
             <param name="val">The val.</param>
             <returns></returns>
         </member>
-        <member name="M:SubSonic.Query.Constraint.In(SubSonic.Query.Select)">
+        <member name="M:SubSonic.Query.Constraint.In(SubSonic.Query.SqlQuery)">
             <summary>
             Specifies a SQL IN statement using a nested Select statement
             </summary>
@@ -403,7 +403,7 @@
             <param name="vals">Value array</param>
             <returns></returns>
         </member>
-        <member name="M:SubSonic.Query.Constraint.NotIn(SubSonic.Query.Select)">
+        <member name="M:SubSonic.Query.Constraint.NotIn(SubSonic.Query.SqlQuery)">
             <summary>
             Specifies a SQL IN statement using a nested Select statement
             </summary>
@@ -4022,6 +4022,13 @@
             </summary>
             <param name="absolutePath">The complete file path to write to.</param>
             <param name="fileText">A String containing text to be written to the file.</param>
+        </member>
+        <member name="M:SubSonic.Extensions.IO.ReadWebPage(System.String)">
+            <summary>
+            Fetches a web page
+            </summary>
+            <param name="url">The URL.</param>
+            <returns></returns>
         </member>
         <member name="T:SubSonic.SpecialString">
             <summary>

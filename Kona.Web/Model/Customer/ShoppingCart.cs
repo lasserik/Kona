@@ -148,7 +148,8 @@ namespace Kona.Data {
         /// </summary>
         public void AdjustQuantity(string sku, int newQuantity) {
             ShoppingCartItem itemToAdjust = FindItem(sku);
-            AdjustQuantity(itemToAdjust.Product, newQuantity);
+            if (itemToAdjust != null)
+                AdjustQuantity(itemToAdjust.Product, newQuantity);
 
         }
         /// <summary>
@@ -193,7 +194,7 @@ namespace Kona.Data {
         public ShoppingCartItem FindItem(Product product) {
             //see if this item is in the cart already
             return (from items in Items
-                    where items.Product.Equals(product)
+                    where items.Product.SKU.Equals(product.SKU,StringComparison.InvariantCultureIgnoreCase)
                     select items).SingleOrDefault();
 
         }

@@ -17,7 +17,7 @@ namespace Kona.Data {
             //the following factory method will retrieve the current Order
             //or create a new one
             var existingOrder = Order.FindCurrentOrCreateNew(this.UserName);
-
+            
             if (existingOrder != null) {
                 //get the items
                 //pull the products first

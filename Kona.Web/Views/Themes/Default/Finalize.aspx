@@ -96,14 +96,11 @@
         </fieldset>
         
 
-        
-        
-
         <%using (Html.BeginForm("Payment","Order")) { %>
         <div style="text-align:right">
             <input type="submit" value="Place Order" />
         </div>
         <%} %>
   </div>
-
+</div>
 </asp:Content>

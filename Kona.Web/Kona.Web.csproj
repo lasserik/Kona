@@ -137,6 +137,7 @@
     <Compile Include="Model\Customer\ShoppingCartItem.cs" />
     <Compile Include="Model\Order\CreditCard.cs" />
     <Compile Include="Model\Order\Order.cs" />
+    <Compile Include="Model\Order\OrderItem.cs" />
     <Compile Include="Model\Order\PaymentMethod.cs" />
     <Compile Include="Model\Order\ShippingMethod.cs" />
     <Compile Include="Model\Order\Transaction.cs" />

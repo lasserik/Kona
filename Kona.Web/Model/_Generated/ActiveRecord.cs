@@ -10458,6 +10458,363 @@ namespace Kona.Data
     
     
     /// <summary>
+    /// A class which represents the Renaud table in the Kona Database.
+    /// </summary>
+    public partial class Renaud: IActiveRecord
+    {
+    
+        #region Built-in testing
+        static IList<Renaud> TestItems;
+        static TestRepository<Renaud> _testRepo;
+        
+        static void SetTestRepo(){
+            _testRepo = _testRepo ?? new TestRepository<Renaud>(new Kona.Data.KonaDB());
+        }
+        public static void ResetTestRepo(){
+            _testRepo = null;
+            SetTestRepo();
+        }
+        public static void Setup(List<Renaud> testlist){
+            SetTestRepo();
+            _testRepo._items = testlist;
+        }
+        public static void Setup(Renaud item) {
+            SetTestRepo();
+            _testRepo._items.Add(item);
+        }
+        public static void Setup(int testItems) {
+            SetTestRepo();
+            for(int i=0;i<testItems;i++){
+                Renaud item=new Renaud();
+                _testRepo._items.Add(item);
+            }
+        }
+        
+        public bool TestMode {
+            get {
+                return this._db.DataProvider.ConnectionString.Equals("test", StringComparison.InvariantCultureIgnoreCase);
+            }
+        }
+
+        #endregion
+
+        IRepository<Renaud> _repo;
+        ITable tbl;
+        bool _isNew;
+        public bool IsNew(){
+            return _isNew;
+        }
+        public void SetIsNew(bool isNew){
+            _isNew=isNew;
+        }
+        public void SetIsLoaded(bool isLoaded){
+            _isLoaded=isLoaded;
+        }
+        bool _isLoaded;
+        public bool IsLoaded(){
+            return _isLoaded;
+        }
+                
+        List<IColumn> _dirtyColumns;
+        public bool IsDirty(){
+            return _dirtyColumns.Count>0;
+        }
+        
+        public List<IColumn> GetDirtyColumns (){
+            return _dirtyColumns;
+        }
+
+        Kona.Data.KonaDB _db;
+        public Renaud() {
+             _db=new Kona.Data.KonaDB();
+            _dirtyColumns=new List<IColumn>();
+            
+            if(TestMode){
+                Renaud.SetTestRepo();
+                _repo=_testRepo;
+            }else{
+                _repo = new SubSonicRepository<Renaud>(_db);
+            }
+            tbl=_repo.GetTable();
+            _isNew = true;
+            OnCreated();
+        }
+        
+       
+        partial void OnCreated();
+            
+        partial void OnLoaded();
+        
+        partial void OnSaved();
+        
+        partial void OnChanged();
+        
+        public IList<IColumn> Columns{
+            get{
+                return tbl.Columns;
+            }
+        }
+        
+        public Renaud(object key):this() {
+            _isLoaded=_repo.Load(this,this.KeyName(),key);
+            if(_isLoaded)
+                OnLoaded();
+
+        }
+
+        public Renaud(Expression<Func<Renaud, bool>> expression):this() {
+            _isLoaded=_repo.Load(this,expression);
+            if(_isLoaded)
+                OnLoaded();
+        }
+        
+        public static SubSonic.Query.SqlQuery Select{
+            get{
+                var db=new Kona.Data.KonaDB();
+                return db.Select.From<Renaud>();
+            }
+        }
+        public static SubSonic.Query.SqlQuery SelectColumns(params string[] columns){
+            var db=new Kona.Data.KonaDB();
+            return new SubSonic.Query.Select(db.DataProvider, columns).From<Renaud>();
+        }
+        internal static IRepository<Renaud> GetRepo(){
+            var db=new Kona.Data.KonaDB();
+            IRepository<Renaud> _repo;
+            
+            if(db.TestMode){
+                Renaud.SetTestRepo();
+                _repo=_testRepo;
+            }else{
+                _repo = new SubSonicRepository<Renaud>(db);
+            }
+            return _repo;
+        }
+        
+        public static Renaud SingleOrDefault(Expression<Func<Renaud, bool>> expression) {
+           
+            var single= All().SingleOrDefault(expression);
+            if (single != null){
+                single.OnLoaded();
+                single.SetIsLoaded(true);
+                single.SetIsNew(false);
+            }
+            return single;
+        }      
+        public static bool Exists(Expression<Func<Renaud, bool>> expression) {
+           
+            return All().Any(expression);
+        }        
+        public static IList<Renaud> Find(Expression<Func<Renaud, bool>> expression) {
+           
+            return GetRepo().Find(expression).ToList();
+        }
+        public static IQueryable<Renaud> All() {
+            return GetRepo().GetAll();
+        }
+        public static PagedList<Renaud> GetPaged<TKey>(Func<Renaud,TKey> orderby, int pageIndex, int pageSize){
+            return GetRepo().GetPaged(orderby, pageIndex, pageSize);
+        }
+        public static PagedList<Renaud> GetPaged<TKey>(string sortBy, int pageIndex, int pageSize) {
+            return GetRepo().GetPaged(sortBy, pageIndex, pageSize);
+        }
+        public static PagedList<Renaud> GetPaged<TKey>(int pageIndex, int pageSize) {
+            return GetRepo().GetPaged(pageIndex, pageSize);
+            
+        }
+
+        public string KeyName()
+        {
+            return "ID";
+        }
+
+        public object KeyValue()
+        {
+            return this.ID;
+        }
+        
+        public void SetKeyValue(object value) {
+            if (value != null) {
+                var settable = value.ChangeTypeTo<int>();
+                this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
+            }
+        }
+        
+        public override string ToString(){
+            return this.Name.ToString();
+        }
+
+        public override bool Equals(object obj){
+            if(obj.GetType()==typeof(Renaud)){
+                Renaud compare=(Renaud)obj;
+                int thisPk=(int)this.KeyValue();
+                int comparePk=(int)compare.KeyValue();
+                return thisPk.Equals(comparePk);
+            }else{
+                return base.Equals(obj);
+            }
+        }
+
+        public string DescriptorValue()
+        {
+            return this.Name.ToString();
+        }
+
+        public string DescriptorColumn() {
+            return "Name";
+        }
+        
+        public static string GetDescriptorColumn()
+        {
+            return "Name";
+        }
+        
+        #region ' Foreign Keys '
+        #endregion
+        
+
+        int _ID;
+        public int ID
+        {
+            get { return _ID; }
+            set
+            {
+                
+                _ID=value;
+                var col=tbl.Columns.SingleOrDefault(x=>x.Name=="ID");
+                if(col!=null){
+                    if(!_dirtyColumns.Contains(col) && _isLoaded){
+                        _dirtyColumns.Add(col);
+                    }
+                }
+                OnChanged();
+            }
+        }
+
+        string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set
+            {
+                
+                _Name=value;
+                var col=tbl.Columns.SingleOrDefault(x=>x.Name=="Name");
+                if(col!=null){
+                    if(!_dirtyColumns.Contains(col) && _isLoaded){
+                        _dirtyColumns.Add(col);
+                    }
+                }
+                OnChanged();
+            }
+        }
+
+
+
+        public DbCommand GetUpdateCommand() {
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return _repo.BuildUpdateQuery(this).GetCommand().ToDbCommand();
+            
+        }
+        public DbCommand GetInsertCommand() {
+ 
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+        }
+        
+        public DbCommand GetDeleteCommand() {
+            if(TestMode)
+                return _db.DataProvider.CreateCommand();
+            else
+                return _repo.BuildDeleteQuery(this).GetCommand().ToDbCommand();
+        }
+        //persistence
+        public void Save(){
+            Save("");
+        }
+        
+        public void Update(string userName){
+            _repo.Update(this);
+            OnSaved();
+       }
+        
+        public void Add(string userName){
+            this.SetKeyValue(_repo.Add(this));
+            OnSaved();
+        }
+        
+        public void Save(string userName) {
+            
+           
+            if (_isNew) {
+                Add(userName);
+                
+            } else {
+                Update(userName);
+            }
+            
+        }
+
+        public void Delete() {
+                   
+                 
+            _repo.Delete(KeyValue());
+            
+                    }
+
+        public static void Delete(object key) {
+        
+            var repo = new SubSonicRepository<Renaud>(new Kona.Data.KonaDB());
+
+                   
+                 
+            repo.Delete(key);
+            
+                        
+        }
+
+        public static void Delete(Func<Renaud, bool> expression) {
+            var repo = GetRepo();
+            
+                   
+            
+            repo.Delete(expression);
+            
+                    }
+
+        
+
+        public void Load(IDataReader rdr) {
+            Load(rdr, true);
+        }
+        public void Load(IDataReader rdr, bool closeReader) {
+            if (rdr.Read()) {
+
+                try {
+                    rdr.Load(this);
+                    _isNew = false;
+                    _isLoaded = true;
+                } catch {
+                    _isLoaded = false;
+                    throw;
+                }
+            }else{
+                _isLoaded = false;
+            }
+
+            if (closeReader)
+                rdr.Dispose();
+        }
+        
+
+    } 
+    
+    
+    /// <summary>
     /// A class which represents the Products_Options table in the Kona Database.
     /// </summary>
     public partial class Products_Option: IActiveRecord

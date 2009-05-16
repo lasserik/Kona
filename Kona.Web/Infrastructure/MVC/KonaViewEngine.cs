@@ -14,7 +14,6 @@ namespace Kona.Web {
                 "~/Views/{1}/{0}.ascx",
                 "~/Views/Shared/{0}.aspx",
                 "~/Views/Shared/{0}.ascx",
-                "~/Views/Plugins/{0}.ascx",
             };
 
             MasterLocationFormats = new[] {

@@ -35,12 +35,10 @@ namespace Kona.Data
         
         }
 
-        public KonaDB(string instanceName, string connectStr)
+        public KonaDB(string connectStr)
         {
-            SubSonic.DataProviders.ConnectionStringProvider.Instance.AddLocalConnectionString(
-                  instanceName, connectStr, "System.Data.SqlClient");
 
-            DataProvider = ProviderFactory.GetProvider(instanceName);
+            DataProvider = ProviderFactory.GetProvider(connectStr);
 
             Init();
 
@@ -144,6 +142,7 @@ namespace Kona.Data
         public Query<Widget> Widgets{ get; set; }
         public Query<ProductOption> ProductOptions{ get; set; }
         public Query<ProductOptionValue> ProductOptionValues{ get; set; }
+        public Query<Renaud> Renauds{ get; set; }
         public Query<Products_Option> Products_Options{ get; set; }
         public Query<CartItem> CartItems{ get; set; }
         public Query<OrderItem> OrderItems{ get; set; }
@@ -277,6 +276,7 @@ namespace Kona.Data
             this.Widgets = new Query<Widget>(this.provider);
             this.ProductOptions = new Query<ProductOption>(this.provider);
             this.ProductOptionValues = new Query<ProductOptionValue>(this.provider);
+            this.Renauds = new Query<Renaud>(this.provider);
             this.Products_Options = new Query<Products_Option>(this.provider);
             this.CartItems = new Query<CartItem>(this.provider);
             this.OrderItems = new Query<OrderItem>(this.provider);
@@ -1305,6 +1305,27 @@ namespace Kona.Data
             ProductOptionValuesSchema.Columns.Add(ProductOptionValuesDescription);
 
             DataProvider.Schema.Tables.Add(ProductOptionValuesSchema);
+
+            // Table: Renaud
+            // Primary Key: ID
+            ITable RenaudSchema = new DatabaseTable("Renaud", DataProvider);
+            RenaudSchema.ClassName = "Renaud";
+            IColumn RenaudID = new DatabaseColumn("ID",RenaudSchema);
+            RenaudID.IsPrimaryKey = true;
+            RenaudID.DataType=DbType.Int32;
+            RenaudID.IsNullable = false;
+            RenaudID.AutoIncrement = false;
+            RenaudID.IsForeignKey = false;
+            RenaudSchema.Columns.Add(RenaudID);
+
+            IColumn RenaudName = new DatabaseColumn("Name",RenaudSchema);
+            RenaudName.DataType=DbType.String;
+            RenaudName.IsNullable = true;
+            RenaudName.AutoIncrement = false;
+            RenaudName.IsForeignKey = false;
+            RenaudSchema.Columns.Add(RenaudName);
+
+            DataProvider.Schema.Tables.Add(RenaudSchema);
 
             // Table: Products_Options
             // Primary Key: OptionID

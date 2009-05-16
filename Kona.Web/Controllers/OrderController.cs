@@ -127,7 +127,6 @@ namespace Kona.Web.Controllers {
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Billing(Kona.Data.Address address) {
 
-
             if (ModelState.IsValid) {
 
                 //save the address
@@ -211,8 +210,13 @@ namespace Kona.Web.Controllers {
             return View("Finalize");
         }
 
-        public ActionResult Receipt() {
-            return View();
+        public ActionResult Receipt(string id) {
+            Guid orderID = new Guid(id);
+
+            //pull the order
+            var order = Order.FindCheckedOutOrder(orderID);
+
+            return View(order);
         }
     }
 }

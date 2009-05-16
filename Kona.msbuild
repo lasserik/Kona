@@ -10,6 +10,7 @@
 			Properties="Configuration=Debug"/>
 		<xunit
 			Assembly="Kona.Tests\bin\Debug\Kona.Tests.dll" />
+		
 	</Target>
 
 </Project>

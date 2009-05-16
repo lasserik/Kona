@@ -15,6 +15,7 @@ namespace Kona.Data {
             result.Processor = processor;
             result.TransactionDate = DateTime.Now;
             result.TransactionID = Guid.NewGuid();
+            result.TransactionErrors = new List<string>();
             return result;
         }
     }

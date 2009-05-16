@@ -37,12 +37,10 @@ namespace <#=Namespace#>
         
         }
 
-        public <#=DatabaseName#>DB(string instanceName, string connectStr)
+        public <#=DatabaseName#>DB(string connectStr)
         {
-            SubSonic.DataProviders.ConnectionStringProvider.Instance.AddLocalConnectionString(
-                  instanceName, connectStr, "System.Data.SqlClient");
 
-            DataProvider = ProviderFactory.GetProvider(instanceName);
+            DataProvider = ProviderFactory.GetProvider(connectStr);
 
             Init();
 

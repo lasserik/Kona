@@ -14,3 +14,7 @@ D:\@Microsoft\Kona_MVCSamples\Kona.Tests\bin\Debug\SubSonic.Core.dll
 D:\@Microsoft\Kona_MVCSamples\Kona.Tests\bin\Debug\SubSonic.Core.pdb
 D:\@Microsoft\Kona_MVCSamples\Kona.Tests\bin\Debug\SubSonic.Core.xml
 D:\@Microsoft\Kona_MVCSamples\Kona.Tests\bin\Debug\DotNetOpenAuth.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Tests\bin\Debug\Kona.Tests.dll.config
+D:\@Microsoft\Kona_MVCSamples\Kona.Tests\bin\Debug\nunit.framework.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Tests\bin\Debug\Machine.Specifications.dll
+D:\@Microsoft\Kona_MVCSamples\Kona.Tests\bin\Debug\Machine.Specifications.NUnit.dll

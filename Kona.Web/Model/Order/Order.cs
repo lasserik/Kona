@@ -38,6 +38,33 @@ namespace Kona.Data {
 
         }
 
+        public static Order FindCheckedOutOrder(Guid orderID) {
+
+            //load the order
+            var order = Order.SingleOrDefault(x => x.OrderID == orderID);
+
+            //if it's not null, pull the products
+            if (order != null) {
+                KonaDB db = new KonaDB();
+                var qry = (from p in db.Products
+                          join oi in db.OrderItems on p.SKU equals oi.SKU
+                          where oi.OrderID == orderID
+                          select p).ToList();
+
+                foreach (var item in order.OrderItems) {
+                    item.Item = qry.SingleOrDefault(x => x.SKU == item.SKU);
+                }
+
+                //get the addresses
+                order.ShippingAddress = Address.SingleOrDefault(x => x.AddressID == order.ShippingAddressID);
+                order.BillingAddress = Address.SingleOrDefault(x => x.AddressID == order.BillingAddressID);
+
+            }
+
+  
+            return order;
+        }
+
         public static Order FindCurrentOrCreateNew(string userName){
             
             var db = new KonaDB();

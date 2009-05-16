@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xunit;
-using Kona.Model;
+using Kona.Data;
+using Specifications;
 
 namespace Kona.Tests {
     /*
@@ -72,7 +73,7 @@ namespace Kona.Tests {
         public void Item_Should_Have_LineTotal_Of_10_With_2_Products_With_Price_5() {
             ShoppingCart cart = new ShoppingCart("TEST");
             Product p = new Product("SKU");
-            p.Price = 5;
+            p.BasePrice = 5;
             cart.AddItem(p);
             cart.AddItem(p);
             Assert.Equal(10, cart.Items[0].LineTotal);
@@ -193,7 +194,7 @@ namespace Kona.Tests {
         public void SubTotal_Should_Be_10_When_2_Items_of_Price_5() {
             ShoppingCart cart = new ShoppingCart("TEST");
             Product p = new Product("SKU");
-            p.Price = 5;
+            p.BasePrice = 5;
             cart.AddItem(p, 1);
             cart.AddItem(p, 1);
             Assert.Equal(10, cart.SubTotal);
@@ -203,7 +204,7 @@ namespace Kona.Tests {
         public void SubTotal_Should_Be_100_When_2_Items_of_Price_5_Adjusted_to_20() {
             ShoppingCart cart = new ShoppingCart("TEST");
             Product p = new Product("SKU");
-            p.Price = 5;
+            p.BasePrice = 5;
             cart.AddItem(p, 1);
             cart.AddItem(p, 1);
             Assert.Equal(10, cart.SubTotal);
@@ -217,7 +218,7 @@ namespace Kona.Tests {
         public void Total_Should_Be_100_With_90_Subtotal_10_Tax() {
             ShoppingCart cart = new ShoppingCart("TEST");
             Product p = new Product("SKU");
-            p.Price = 90;
+            p.BasePrice = 90;
             cart.AddItem(p, 1);
             Assert.Equal(90, cart.SubTotal);
 
@@ -230,7 +231,7 @@ namespace Kona.Tests {
         public void Total_Should_Be_110_With_90_Subtotal_10_Tax_and_10_Shipping() {
             ShoppingCart cart = new ShoppingCart("TEST");
             Product p = new Product("SKU");
-            p.Price = 90;
+            p.BasePrice = 90;
             cart.AddItem(p, 1);
             Assert.Equal(90, cart.SubTotal);
 
