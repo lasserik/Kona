@@ -195,7 +195,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<string>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -397,8 +397,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -418,7 +422,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -666,7 +671,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -774,8 +779,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -795,7 +804,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -1043,7 +1053,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -1407,8 +1417,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -1428,6 +1442,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
+            
+            
             this.SetKeyValue(_repo.Add(this));
             OnSaved();
         }
@@ -1676,7 +1692,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -1804,8 +1820,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -1825,7 +1845,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -2073,7 +2094,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<string>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -2201,8 +2222,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -2222,7 +2247,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -2470,7 +2496,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<string>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -2598,8 +2624,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -2619,7 +2649,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -2867,7 +2898,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -3011,8 +3042,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -3032,6 +3067,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
+            
+            
             this.SetKeyValue(_repo.Add(this));
             OnSaved();
         }
@@ -3280,7 +3317,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -3460,8 +3497,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -3481,6 +3522,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
+            
+            
             this.SetKeyValue(_repo.Add(this));
             OnSaved();
         }
@@ -3729,7 +3772,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -3891,8 +3934,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -3912,6 +3959,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
+            
+            
             this.SetKeyValue(_repo.Add(this));
             OnSaved();
         }
@@ -4160,7 +4209,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<Guid>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -4358,8 +4407,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -4379,7 +4432,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -4627,7 +4681,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -4863,8 +4917,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -4884,6 +4942,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
+            
+            
             this.SetKeyValue(_repo.Add(this));
             OnSaved();
         }
@@ -5132,7 +5192,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -5260,8 +5320,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -5281,7 +5345,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -5529,7 +5594,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<Guid>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -5765,8 +5830,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -5786,7 +5855,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -6034,7 +6104,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -6250,8 +6320,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -6271,6 +6345,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
+            
+            
             this.SetKeyValue(_repo.Add(this));
             OnSaved();
         }
@@ -6519,7 +6595,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<Guid>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -6810,8 +6886,17 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            this.CreatedOn=DateTime.Now;
+            this.CreatedBy="";
+            this.ModifiedOn=DateTime.Now;
+            this.ModifiedBy="";
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -6838,7 +6923,8 @@ namespace Kona.Data
             this.CreatedBy=userName;
             this.ModifiedOn=DateTime.Now;
             this.ModifiedBy=userName;
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -7086,7 +7172,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<string>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -7590,8 +7676,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -7611,7 +7701,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -7859,7 +7950,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<Guid>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -8356,8 +8447,15 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            this.CreatedOn=DateTime.Now;
+            this.ModifiedOn=DateTime.Now;
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -8381,7 +8479,8 @@ namespace Kona.Data
             
             this.CreatedOn=DateTime.Now;
             this.ModifiedOn=DateTime.Now;
-            this.SetKeyValue(_repo.Add(this));
+            
+            _repo.Add(this);
             OnSaved();
         }
         
@@ -8629,7 +8728,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -8813,8 +8912,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -8834,6 +8937,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
+            
+            
             this.SetKeyValue(_repo.Add(this));
             OnSaved();
         }
@@ -9082,7 +9187,7 @@ namespace Kona.Data
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<int>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -9190,8 +9295,12 @@ namespace Kona.Data
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -9211,6 +9320,8 @@ namespace Kona.Data
        }
         
         public void Add(string userName){
+            
+            
             this.SetKeyValue(_repo.Add(this));
             OnSaved();
         }

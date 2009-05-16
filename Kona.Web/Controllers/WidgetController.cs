@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using Kona.Data;
+using System.Data.Common;
 
 namespace Kona.Web.Controllers
 {
@@ -48,18 +49,41 @@ namespace Kona.Web.Controllers
         // POST: /Widget/Create
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection form)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Widget newWidget = new Widget();
+            UpdateModel<Widget>(newWidget);
+
+            //TODO: wrap me in a transaction yo!
+
+            //the category ID should be sent in as "categoryid"
+            string categoryID = form["CategoryID"];
+
+            newWidget.WidgetID = Guid.NewGuid();
+            newWidget.LanguageCode = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            newWidget.ListOrder = 0;
+            newWidget.Title = "";
+            newWidget.Body = "";
+            newWidget.SKUList = "";
+ 
+            var widgetCommand = newWidget.GetInsertCommand();
+
+            //save the category too
+            Categories_Widget map = new Categories_Widget();
+            int catid = 0;
+            int.TryParse(categoryID, out catid);
+            map.CategoryID = catid;
+            map.WidgetID = newWidget.WidgetID;
+
+            var mapCommand = map.GetInsertCommand();
+
+            KonaDB db = new KonaDB();
+            db.ExecuteTransaction(new List<DbCommand>() { widgetCommand, mapCommand });
+
+            //return a json result with the ID
+            return Json(new { ID = newWidget.WidgetID, Zone = newWidget.Zone });
+
         }
 
         //

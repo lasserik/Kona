@@ -203,7 +203,7 @@ namespace <#=Namespace #>
         }
         
         public void SetKeyValue(object value) {
-            if (value != null) {
+            if (value != DBNull.Value) {
                 var settable = value.ChangeTypeTo<<#=tbl.PK.SysType#>>();
                 this.GetType().GetProperty(this.KeyName()).SetValue(this, settable, null);
             }
@@ -324,8 +324,24 @@ namespace <#=Namespace #>
  
             if(TestMode)
                 return _db.DataProvider.CreateCommand();
-            else
+            else{
+<#if(tbl.Columns.Any(x=>x.Name=="CreatedOn")){#>
+            
+            this.CreatedOn=DateTime.Now;
+<#}#>
+<#if(tbl.Columns.Any(x=>x.Name=="CreatedBy")){#>
+            this.CreatedBy="";
+<#}#>
+<#if(tbl.Columns.Any(x=>x.Name=="ModifiedOn")){#>
+            this.ModifiedOn=DateTime.Now;
+<#}#>
+<#if(tbl.Columns.Any(x=>x.Name=="ModifiedBy")){#>
+            this.ModifiedBy="";
+<#}#>            
+            
                 return _repo.BuildInsertQuery(this).GetCommand().ToDbCommand();
+                
+            }
         }
         
         public DbCommand GetDeleteCommand() {
@@ -364,7 +380,12 @@ namespace <#=Namespace #>
 <#if(tbl.Columns.Any(x=>x.Name=="ModifiedBy")){#>
             this.ModifiedBy=userName;
 <#}#>
+            
+<#if(tbl.PK.AutoIncrement){#>            
             this.SetKeyValue(_repo.Add(this));
+<#}else{#>
+            _repo.Add(this);
+<#}#>
             OnSaved();
         }
         
