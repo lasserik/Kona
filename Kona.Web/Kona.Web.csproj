@@ -92,33 +92,22 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\cs\Plugins\OrderPlugins\SimpleOrderExecution.cs" />
-    <Content Include="App_Code\cs\Plugins\Email\FakeEmailer.cs" />
     <Compile Include="Controllers\OrderController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\PageController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Infrastructure\Helpers\CMSExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\ControllerExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\CSSExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\CurrencyExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\CustomerExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\HtmlExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\OrderExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\PluginExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\ThemeExtensions.cs" />
-    <Compile Include="Infrastructure\Helpers\WidgetExtensions.cs" />
+    <Compile Include="Controllers\WidgetController.cs" />
+    <Compile Include="Helpers\ControllerExtensions.cs" />
+    <Compile Include="Helpers\CurrencyExtensions.cs" />
+    <Compile Include="Helpers\CustomerExtensions.cs" />
+    <Compile Include="Helpers\HtmlExtensions.cs" />
+    <Compile Include="Helpers\OrderExtensions.cs" />
+    <Compile Include="Helpers\PluginExtensions.cs" />
+    <Compile Include="Helpers\ThemeExtensions.cs" />
     <Compile Include="Infrastructure\DI\Bootstrapper.cs" />
-    <Compile Include="Infrastructure\Helpers\ProductExtensions.cs" />
+    <Compile Include="Helpers\ProductExtensions.cs" />
     <Compile Include="Infrastructure\MVC\KonaController.cs" />
     <Compile Include="Infrastructure\MVC\KonaControllerFactory.cs" />
     <Compile Include="Infrastructure\MVC\KonaViewEngine.cs" />
-    <Content Include="App_Code\cs\Plugins\OrderPlugins\MVCOrderNumber.cs" />
-    <Content Include="App_Code\cs\Plugins\Shipping\SimpleShippingCalculator.cs" />
-    <Content Include="App_Code\cs\Plugins\Tax\USTaxCalculator.cs" />
-    <Content Include="App_Code\cs\Plugins\Payment\FakePaymentGateway.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -129,8 +118,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Model\CMS\Page.cs" />
-    <Compile Include="Model\CMS\Widget.cs" />
     <Compile Include="Model\Customer\Address.cs" />
     <Compile Include="Model\Customer\Customer.cs" />
     <Compile Include="Model\Customer\ShoppingCart.cs" />
@@ -141,6 +128,10 @@
     <Compile Include="Model\Order\PaymentMethod.cs" />
     <Compile Include="Model\Order\ShippingMethod.cs" />
     <Compile Include="Model\Order\Transaction.cs" />
+    <Compile Include="Model\Product\Category.cs" />
+    <Compile Include="Model\Product\Widget.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Model\Site\KonaSite.cs" />
     <Compile Include="Model\_Generated\ActiveRecord.cs">
       <AutoGen>True</AutoGen>
@@ -1601,6 +1592,7 @@
     <Content Include="Views\Themes\Default\Cart.aspx" />
     <Content Include="Views\Themes\Default\Checkout.aspx" />
     <Content Include="Views\Themes\Default\Detail.aspx" />
+    <Content Include="Views\Themes\Default\EditCategory.aspx" />
     <Content Include="Views\Themes\Default\EditPage.aspx" />
     <Content Include="Views\Themes\Default\Finalize.aspx" />
     <Content Include="Views\Themes\Default\images\arrowDown.gif" />
@@ -1645,6 +1637,9 @@
       <Project>{37E201C2-2F3F-4F98-AF5F-8F5D786D2698}</Project>
       <Name>Kona.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\cs\Plugins\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

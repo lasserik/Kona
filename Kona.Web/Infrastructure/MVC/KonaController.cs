@@ -52,12 +52,12 @@ namespace Kona.Web {
                 ViewData["CurrentCart"] = CurrentCustomer.Cart;
             }
         }
-        public Page CurrentPage {
+        public Category CurrentCategory {
             get {
-                return (Page)ViewData["CurrentPage"];
+                return (Category)ViewData["CurrentCategory"];
             }
             set {
-                ViewData["CurrentPage"] = value;
+                ViewData["CurrentCategory"] = value;
             }
         }
         public Customer CurrentCustomer {

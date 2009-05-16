@@ -204,8 +204,8 @@ namespace Kona.Web.Controllers {
 
             if (id > 0) {
                 this.ShippingMethods = _pluginEngine.CalculateShipping(this.SiteData.ShippingPlugin, this.CurrentCart); ;
-                var selectedShipping = this.ShippingMethods.SingleOrDefault(x => x.ShippingMethodID == id);
-                this.CurrentCart.SetSelectedShipping(selectedShipping);
+                //var selectedShipping = this.ShippingMethods.SingleOrDefault(x => x.ShippingMethodID == id);
+                //this.CurrentCart.SetSelectedShipping(selectedShipping);
             }
             return View("Finalize");
         }

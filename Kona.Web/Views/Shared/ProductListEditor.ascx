@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Widget<IList<Product>>>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Widget>" %>
 
     <script type="text/javascript">
         $('#sku_<%=Model.WidgetID%>').autocomplete("/page/skulist/", {

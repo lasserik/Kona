@@ -24,8 +24,7 @@ namespace Kona.Web.Controllers {
         public ActionResult Index(string slug) {
 
             slug = slug ?? "";
-            this.CurrentPage = Page.GetPage(slug);
-            this.CurrentPage.LoadWidgets();
+            this.CurrentCategory = Category.GetCategoryPage(slug);
 
             return View();
         }
@@ -33,6 +32,13 @@ namespace Kona.Web.Controllers {
             this.SelectedProduct = new Product(sku);
             return View("Detail");
         }
+
+        public ActionResult Edit(string slug) {
+            slug = slug ?? "";
+            this.CurrentCategory = Category.GetCategoryPage(slug);
+            return View("EditCategory",this.CurrentCategory);
+        }
+
         public ActionResult About() {
             return View();
         }

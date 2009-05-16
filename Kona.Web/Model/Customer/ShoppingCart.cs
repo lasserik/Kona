@@ -80,7 +80,7 @@ namespace Kona.Data {
         public void SetSelectedShipping(ShippingMethod method) {
             this.ShippingService = method.ServiceName;
             this.ShippingAmount = method.Cost;
-            this.ShippingMethodID = method.ShippingMethodID;
+            //this.ShippingMethodID = method.ShippingMethodID;
 
         }
 

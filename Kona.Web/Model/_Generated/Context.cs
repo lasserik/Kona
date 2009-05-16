@@ -119,36 +119,23 @@ namespace Kona.Data
                 return null;
         }
 			
-        public Query<DeliveryMethod> DeliveryMethods{ get; set; }
         public Query<Customer> Customers{ get; set; }
-        public Query<TaxRate> TaxRates{ get; set; }
-        public Query<PageStatus> PageStatuses{ get; set; }
         public Query<CustomerBehavior> CustomerBehaviors{ get; set; }
         public Query<Address> Addresses{ get; set; }
-        public Query<CategoryLocalized> CategoryLocalizeds{ get; set; }
         public Query<Categories_Product> Categories_Products{ get; set; }
-        public Query<CategoryImage> CategoryImages{ get; set; }
         public Query<Products_CrossSell> Products_CrossSells{ get; set; }
         public Query<Products_Related> Products_Relateds{ get; set; }
         public Query<ProductImage> ProductImages{ get; set; }
         public Query<ProductDescriptor> ProductDescriptors{ get; set; }
         public Query<InventoryRecord> InventoryRecords{ get; set; }
         public Query<Transaction> Transactions{ get; set; }
-        public Query<Page> Pages{ get; set; }
-        public Query<Widgets_Product> Widgets_Products{ get; set; }
-        public Query<Widgets_Group> Widgets_Groups{ get; set; }
         public Query<CustomerEvent> CustomerEvents{ get; set; }
-        public Query<ProductOptionDisplay> ProductOptionDisplays{ get; set; }
-        public Query<Widget> Widgets{ get; set; }
-        public Query<ProductOption> ProductOptions{ get; set; }
-        public Query<ProductOptionValue> ProductOptionValues{ get; set; }
-        public Query<Renaud> Renauds{ get; set; }
-        public Query<Products_Option> Products_Options{ get; set; }
-        public Query<CartItem> CartItems{ get; set; }
+        public Query<Categories_Widget> Categories_Widgets{ get; set; }
         public Query<OrderItem> OrderItems{ get; set; }
+        public Query<CategoryLocalized> CategoryLocalizeds{ get; set; }
+        public Query<Widget> Widgets{ get; set; }
         public Query<Product> Products{ get; set; }
         public Query<Order> Orders{ get; set; }
-        public Query<ShippingMethod> ShippingMethods{ get; set; }
         public Query<Category> Categories{ get; set; }
         public Query<InventoryStatus> InventoryStatuses{ get; set; }
 
@@ -253,36 +240,23 @@ namespace Kona.Data
             this.provider = new DbQueryProvider(DataProvider);
 
             #region ' Query Defs '
-            this.DeliveryMethods = new Query<DeliveryMethod>(this.provider);
             this.Customers = new Query<Customer>(this.provider);
-            this.TaxRates = new Query<TaxRate>(this.provider);
-            this.PageStatuses = new Query<PageStatus>(this.provider);
             this.CustomerBehaviors = new Query<CustomerBehavior>(this.provider);
             this.Addresses = new Query<Address>(this.provider);
-            this.CategoryLocalizeds = new Query<CategoryLocalized>(this.provider);
             this.Categories_Products = new Query<Categories_Product>(this.provider);
-            this.CategoryImages = new Query<CategoryImage>(this.provider);
             this.Products_CrossSells = new Query<Products_CrossSell>(this.provider);
             this.Products_Relateds = new Query<Products_Related>(this.provider);
             this.ProductImages = new Query<ProductImage>(this.provider);
             this.ProductDescriptors = new Query<ProductDescriptor>(this.provider);
             this.InventoryRecords = new Query<InventoryRecord>(this.provider);
             this.Transactions = new Query<Transaction>(this.provider);
-            this.Pages = new Query<Page>(this.provider);
-            this.Widgets_Products = new Query<Widgets_Product>(this.provider);
-            this.Widgets_Groups = new Query<Widgets_Group>(this.provider);
             this.CustomerEvents = new Query<CustomerEvent>(this.provider);
-            this.ProductOptionDisplays = new Query<ProductOptionDisplay>(this.provider);
-            this.Widgets = new Query<Widget>(this.provider);
-            this.ProductOptions = new Query<ProductOption>(this.provider);
-            this.ProductOptionValues = new Query<ProductOptionValue>(this.provider);
-            this.Renauds = new Query<Renaud>(this.provider);
-            this.Products_Options = new Query<Products_Option>(this.provider);
-            this.CartItems = new Query<CartItem>(this.provider);
+            this.Categories_Widgets = new Query<Categories_Widget>(this.provider);
             this.OrderItems = new Query<OrderItem>(this.provider);
+            this.CategoryLocalizeds = new Query<CategoryLocalized>(this.provider);
+            this.Widgets = new Query<Widget>(this.provider);
             this.Products = new Query<Product>(this.provider);
             this.Orders = new Query<Order>(this.provider);
-            this.ShippingMethods = new Query<ShippingMethod>(this.provider);
             this.Categories = new Query<Category>(this.provider);
             this.InventoryStatuses = new Query<InventoryStatus>(this.provider);
             #endregion
@@ -290,27 +264,6 @@ namespace Kona.Data
 
             #region ' Schemas '
         if(DataProvider.Schema.Tables.Count==0){
-
-            // Table: DeliveryMethod
-            // Primary Key: DeliveryMethodID
-            ITable DeliveryMethodSchema = new DatabaseTable("DeliveryMethod", DataProvider);
-            DeliveryMethodSchema.ClassName = "DeliveryMethod";
-            IColumn DeliveryMethodDeliveryMethodID = new DatabaseColumn("DeliveryMethodID",DeliveryMethodSchema);
-            DeliveryMethodDeliveryMethodID.IsPrimaryKey = true;
-            DeliveryMethodDeliveryMethodID.DataType=DbType.Int32;
-            DeliveryMethodDeliveryMethodID.IsNullable = false;
-            DeliveryMethodDeliveryMethodID.AutoIncrement = true;
-            DeliveryMethodDeliveryMethodID.IsForeignKey = true;
-            DeliveryMethodSchema.Columns.Add(DeliveryMethodDeliveryMethodID);
-
-            IColumn DeliveryMethodDescription = new DatabaseColumn("Description",DeliveryMethodSchema);
-            DeliveryMethodDescription.DataType=DbType.String;
-            DeliveryMethodDescription.IsNullable = false;
-            DeliveryMethodDescription.AutoIncrement = false;
-            DeliveryMethodDescription.IsForeignKey = false;
-            DeliveryMethodSchema.Columns.Add(DeliveryMethodDescription);
-
-            DataProvider.Schema.Tables.Add(DeliveryMethodSchema);
 
             // Table: Customers
             // Primary Key: UserName
@@ -353,76 +306,6 @@ namespace Kona.Data
             CustomersSchema.Columns.Add(CustomersLanguageCode);
 
             DataProvider.Schema.Tables.Add(CustomersSchema);
-
-            // Table: TaxRates
-            // Primary Key: TaxRateID
-            ITable TaxRatesSchema = new DatabaseTable("TaxRates", DataProvider);
-            TaxRatesSchema.ClassName = "TaxRate";
-            IColumn TaxRatesTaxRateID = new DatabaseColumn("TaxRateID",TaxRatesSchema);
-            TaxRatesTaxRateID.IsPrimaryKey = true;
-            TaxRatesTaxRateID.DataType=DbType.Int32;
-            TaxRatesTaxRateID.IsNullable = false;
-            TaxRatesTaxRateID.AutoIncrement = true;
-            TaxRatesTaxRateID.IsForeignKey = false;
-            TaxRatesSchema.Columns.Add(TaxRatesTaxRateID);
-
-            IColumn TaxRatesRate = new DatabaseColumn("Rate",TaxRatesSchema);
-            TaxRatesRate.DataType=DbType.Currency;
-            TaxRatesRate.IsNullable = false;
-            TaxRatesRate.AutoIncrement = false;
-            TaxRatesRate.IsForeignKey = false;
-            TaxRatesSchema.Columns.Add(TaxRatesRate);
-
-            IColumn TaxRatesRegion = new DatabaseColumn("Region",TaxRatesSchema);
-            TaxRatesRegion.DataType=DbType.AnsiStringFixedLength;
-            TaxRatesRegion.IsNullable = false;
-            TaxRatesRegion.AutoIncrement = false;
-            TaxRatesRegion.IsForeignKey = false;
-            TaxRatesSchema.Columns.Add(TaxRatesRegion);
-
-            IColumn TaxRatesCountry = new DatabaseColumn("Country",TaxRatesSchema);
-            TaxRatesCountry.DataType=DbType.AnsiStringFixedLength;
-            TaxRatesCountry.IsNullable = false;
-            TaxRatesCountry.AutoIncrement = false;
-            TaxRatesCountry.IsForeignKey = false;
-            TaxRatesSchema.Columns.Add(TaxRatesCountry);
-
-            IColumn TaxRatesPostalCode = new DatabaseColumn("PostalCode",TaxRatesSchema);
-            TaxRatesPostalCode.DataType=DbType.String;
-            TaxRatesPostalCode.IsNullable = true;
-            TaxRatesPostalCode.AutoIncrement = false;
-            TaxRatesPostalCode.IsForeignKey = false;
-            TaxRatesSchema.Columns.Add(TaxRatesPostalCode);
-
-            DataProvider.Schema.Tables.Add(TaxRatesSchema);
-
-            // Table: PageStatus
-            // Primary Key: PageStatusID
-            ITable PageStatusSchema = new DatabaseTable("PageStatus", DataProvider);
-            PageStatusSchema.ClassName = "PageStatus";
-            IColumn PageStatusPageStatusID = new DatabaseColumn("PageStatusID",PageStatusSchema);
-            PageStatusPageStatusID.IsPrimaryKey = true;
-            PageStatusPageStatusID.DataType=DbType.Int32;
-            PageStatusPageStatusID.IsNullable = false;
-            PageStatusPageStatusID.AutoIncrement = true;
-            PageStatusPageStatusID.IsForeignKey = true;
-            PageStatusSchema.Columns.Add(PageStatusPageStatusID);
-
-            IColumn PageStatusDescription = new DatabaseColumn("Description",PageStatusSchema);
-            PageStatusDescription.DataType=DbType.String;
-            PageStatusDescription.IsNullable = false;
-            PageStatusDescription.AutoIncrement = false;
-            PageStatusDescription.IsForeignKey = false;
-            PageStatusSchema.Columns.Add(PageStatusDescription);
-
-            IColumn PageStatusIsPublished = new DatabaseColumn("IsPublished",PageStatusSchema);
-            PageStatusIsPublished.DataType=DbType.Boolean;
-            PageStatusIsPublished.IsNullable = false;
-            PageStatusIsPublished.AutoIncrement = false;
-            PageStatusIsPublished.IsForeignKey = false;
-            PageStatusSchema.Columns.Add(PageStatusIsPublished);
-
-            DataProvider.Schema.Tables.Add(PageStatusSchema);
 
             // Table: CustomerBehaviors
             // Primary Key: UserBehaviorID
@@ -550,55 +433,6 @@ namespace Kona.Data
 
             DataProvider.Schema.Tables.Add(AddressesSchema);
 
-            // Table: CategoryLocalized
-            // Primary Key: CategoryNameID
-            ITable CategoryLocalizedSchema = new DatabaseTable("CategoryLocalized", DataProvider);
-            CategoryLocalizedSchema.ClassName = "CategoryLocalized";
-            IColumn CategoryLocalizedCategoryNameID = new DatabaseColumn("CategoryNameID",CategoryLocalizedSchema);
-            CategoryLocalizedCategoryNameID.IsPrimaryKey = true;
-            CategoryLocalizedCategoryNameID.DataType=DbType.Int32;
-            CategoryLocalizedCategoryNameID.IsNullable = false;
-            CategoryLocalizedCategoryNameID.AutoIncrement = true;
-            CategoryLocalizedCategoryNameID.IsForeignKey = false;
-            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedCategoryNameID);
-
-            IColumn CategoryLocalizedCategoryID = new DatabaseColumn("CategoryID",CategoryLocalizedSchema);
-            CategoryLocalizedCategoryID.DataType=DbType.Int32;
-            CategoryLocalizedCategoryID.IsNullable = false;
-            CategoryLocalizedCategoryID.AutoIncrement = false;
-            CategoryLocalizedCategoryID.IsForeignKey = true;
-            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedCategoryID);
-
-            IColumn CategoryLocalizedLanguageCode = new DatabaseColumn("LanguageCode",CategoryLocalizedSchema);
-            CategoryLocalizedLanguageCode.DataType=DbType.AnsiStringFixedLength;
-            CategoryLocalizedLanguageCode.IsNullable = false;
-            CategoryLocalizedLanguageCode.AutoIncrement = false;
-            CategoryLocalizedLanguageCode.IsForeignKey = false;
-            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedLanguageCode);
-
-            IColumn CategoryLocalizedName = new DatabaseColumn("Name",CategoryLocalizedSchema);
-            CategoryLocalizedName.DataType=DbType.String;
-            CategoryLocalizedName.IsNullable = false;
-            CategoryLocalizedName.AutoIncrement = false;
-            CategoryLocalizedName.IsForeignKey = false;
-            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedName);
-
-            IColumn CategoryLocalizedDefaultImageFile = new DatabaseColumn("DefaultImageFile",CategoryLocalizedSchema);
-            CategoryLocalizedDefaultImageFile.DataType=DbType.String;
-            CategoryLocalizedDefaultImageFile.IsNullable = true;
-            CategoryLocalizedDefaultImageFile.AutoIncrement = false;
-            CategoryLocalizedDefaultImageFile.IsForeignKey = false;
-            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedDefaultImageFile);
-
-            IColumn CategoryLocalizedDescription = new DatabaseColumn("Description",CategoryLocalizedSchema);
-            CategoryLocalizedDescription.DataType=DbType.String;
-            CategoryLocalizedDescription.IsNullable = true;
-            CategoryLocalizedDescription.AutoIncrement = false;
-            CategoryLocalizedDescription.IsForeignKey = false;
-            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedDescription);
-
-            DataProvider.Schema.Tables.Add(CategoryLocalizedSchema);
-
             // Table: Categories_Products
             // Primary Key: CategoryID
             ITable Categories_ProductsSchema = new DatabaseTable("Categories_Products", DataProvider);
@@ -619,41 +453,6 @@ namespace Kona.Data
             Categories_ProductsSchema.Columns.Add(Categories_ProductsSKU);
 
             DataProvider.Schema.Tables.Add(Categories_ProductsSchema);
-
-            // Table: CategoryImages
-            // Primary Key: CategoryImageID
-            ITable CategoryImagesSchema = new DatabaseTable("CategoryImages", DataProvider);
-            CategoryImagesSchema.ClassName = "CategoryImage";
-            IColumn CategoryImagesCategoryImageID = new DatabaseColumn("CategoryImageID",CategoryImagesSchema);
-            CategoryImagesCategoryImageID.IsPrimaryKey = true;
-            CategoryImagesCategoryImageID.DataType=DbType.Int32;
-            CategoryImagesCategoryImageID.IsNullable = false;
-            CategoryImagesCategoryImageID.AutoIncrement = true;
-            CategoryImagesCategoryImageID.IsForeignKey = false;
-            CategoryImagesSchema.Columns.Add(CategoryImagesCategoryImageID);
-
-            IColumn CategoryImagesCategoryID = new DatabaseColumn("CategoryID",CategoryImagesSchema);
-            CategoryImagesCategoryID.DataType=DbType.Int32;
-            CategoryImagesCategoryID.IsNullable = true;
-            CategoryImagesCategoryID.AutoIncrement = false;
-            CategoryImagesCategoryID.IsForeignKey = true;
-            CategoryImagesSchema.Columns.Add(CategoryImagesCategoryID);
-
-            IColumn CategoryImagesThumbUrl = new DatabaseColumn("ThumbUrl",CategoryImagesSchema);
-            CategoryImagesThumbUrl.DataType=DbType.String;
-            CategoryImagesThumbUrl.IsNullable = false;
-            CategoryImagesThumbUrl.AutoIncrement = false;
-            CategoryImagesThumbUrl.IsForeignKey = false;
-            CategoryImagesSchema.Columns.Add(CategoryImagesThumbUrl);
-
-            IColumn CategoryImagesFullImageUrl = new DatabaseColumn("FullImageUrl",CategoryImagesSchema);
-            CategoryImagesFullImageUrl.DataType=DbType.String;
-            CategoryImagesFullImageUrl.IsNullable = false;
-            CategoryImagesFullImageUrl.AutoIncrement = false;
-            CategoryImagesFullImageUrl.IsForeignKey = false;
-            CategoryImagesSchema.Columns.Add(CategoryImagesFullImageUrl);
-
-            DataProvider.Schema.Tables.Add(CategoryImagesSchema);
 
             // Table: Products_CrossSell
             // Primary Key: CrossSKU
@@ -879,167 +678,6 @@ namespace Kona.Data
 
             DataProvider.Schema.Tables.Add(TransactionsSchema);
 
-            // Table: Pages
-            // Primary Key: PageID
-            ITable PagesSchema = new DatabaseTable("Pages", DataProvider);
-            PagesSchema.ClassName = "Page";
-            IColumn PagesPageID = new DatabaseColumn("PageID",PagesSchema);
-            PagesPageID.IsPrimaryKey = true;
-            PagesPageID.DataType=DbType.Guid;
-            PagesPageID.IsNullable = false;
-            PagesPageID.AutoIncrement = false;
-            PagesPageID.IsForeignKey = true;
-            PagesSchema.Columns.Add(PagesPageID);
-
-            IColumn PagesIsDraftPage = new DatabaseColumn("IsDraftPage",PagesSchema);
-            PagesIsDraftPage.DataType=DbType.Boolean;
-            PagesIsDraftPage.IsNullable = false;
-            PagesIsDraftPage.AutoIncrement = false;
-            PagesIsDraftPage.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesIsDraftPage);
-
-            IColumn PagesTitle = new DatabaseColumn("Title",PagesSchema);
-            PagesTitle.DataType=DbType.String;
-            PagesTitle.IsNullable = false;
-            PagesTitle.AutoIncrement = false;
-            PagesTitle.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesTitle);
-
-            IColumn PagesLanguageCode = new DatabaseColumn("LanguageCode",PagesSchema);
-            PagesLanguageCode.DataType=DbType.AnsiStringFixedLength;
-            PagesLanguageCode.IsNullable = false;
-            PagesLanguageCode.AutoIncrement = false;
-            PagesLanguageCode.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesLanguageCode);
-
-            IColumn PagesViewName = new DatabaseColumn("ViewName",PagesSchema);
-            PagesViewName.DataType=DbType.String;
-            PagesViewName.IsNullable = false;
-            PagesViewName.AutoIncrement = false;
-            PagesViewName.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesViewName);
-
-            IColumn PagesListOrder = new DatabaseColumn("ListOrder",PagesSchema);
-            PagesListOrder.DataType=DbType.Int32;
-            PagesListOrder.IsNullable = false;
-            PagesListOrder.AutoIncrement = false;
-            PagesListOrder.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesListOrder);
-
-            IColumn PagesSlug = new DatabaseColumn("Slug",PagesSchema);
-            PagesSlug.DataType=DbType.String;
-            PagesSlug.IsNullable = false;
-            PagesSlug.AutoIncrement = false;
-            PagesSlug.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesSlug);
-
-            IColumn PagesCreatedOn = new DatabaseColumn("CreatedOn",PagesSchema);
-            PagesCreatedOn.DataType=DbType.DateTime;
-            PagesCreatedOn.IsNullable = false;
-            PagesCreatedOn.AutoIncrement = false;
-            PagesCreatedOn.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesCreatedOn);
-
-            IColumn PagesModifiedOn = new DatabaseColumn("ModifiedOn",PagesSchema);
-            PagesModifiedOn.DataType=DbType.DateTime;
-            PagesModifiedOn.IsNullable = false;
-            PagesModifiedOn.AutoIncrement = false;
-            PagesModifiedOn.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesModifiedOn);
-
-            IColumn PagesCreatedBy = new DatabaseColumn("CreatedBy",PagesSchema);
-            PagesCreatedBy.DataType=DbType.String;
-            PagesCreatedBy.IsNullable = true;
-            PagesCreatedBy.AutoIncrement = false;
-            PagesCreatedBy.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesCreatedBy);
-
-            IColumn PagesModifiedBy = new DatabaseColumn("ModifiedBy",PagesSchema);
-            PagesModifiedBy.DataType=DbType.String;
-            PagesModifiedBy.IsNullable = true;
-            PagesModifiedBy.AutoIncrement = false;
-            PagesModifiedBy.IsForeignKey = false;
-            PagesSchema.Columns.Add(PagesModifiedBy);
-
-            IColumn PagesPageStatusID = new DatabaseColumn("PageStatusID",PagesSchema);
-            PagesPageStatusID.DataType=DbType.Int32;
-            PagesPageStatusID.IsNullable = false;
-            PagesPageStatusID.AutoIncrement = false;
-            PagesPageStatusID.IsForeignKey = true;
-            PagesSchema.Columns.Add(PagesPageStatusID);
-
-            IColumn PagesParentPageID = new DatabaseColumn("ParentPageID",PagesSchema);
-            PagesParentPageID.DataType=DbType.Guid;
-            PagesParentPageID.IsNullable = true;
-            PagesParentPageID.AutoIncrement = false;
-            PagesParentPageID.IsForeignKey = true;
-            PagesSchema.Columns.Add(PagesParentPageID);
-
-            IColumn PagesPrimaryOrDraftPageID = new DatabaseColumn("PrimaryOrDraftPageID",PagesSchema);
-            PagesPrimaryOrDraftPageID.DataType=DbType.Guid;
-            PagesPrimaryOrDraftPageID.IsNullable = true;
-            PagesPrimaryOrDraftPageID.AutoIncrement = false;
-            PagesPrimaryOrDraftPageID.IsForeignKey = true;
-            PagesSchema.Columns.Add(PagesPrimaryOrDraftPageID);
-
-            IColumn PagesWidgetGroupID = new DatabaseColumn("WidgetGroupID",PagesSchema);
-            PagesWidgetGroupID.DataType=DbType.Guid;
-            PagesWidgetGroupID.IsNullable = true;
-            PagesWidgetGroupID.AutoIncrement = false;
-            PagesWidgetGroupID.IsForeignKey = true;
-            PagesSchema.Columns.Add(PagesWidgetGroupID);
-
-            DataProvider.Schema.Tables.Add(PagesSchema);
-
-            // Table: Widgets_Products
-            // Primary Key: SKU
-            ITable Widgets_ProductsSchema = new DatabaseTable("Widgets_Products", DataProvider);
-            Widgets_ProductsSchema.ClassName = "Widgets_Product";
-            IColumn Widgets_ProductsWidgetID = new DatabaseColumn("WidgetID",Widgets_ProductsSchema);
-            Widgets_ProductsWidgetID.DataType=DbType.Guid;
-            Widgets_ProductsWidgetID.IsNullable = false;
-            Widgets_ProductsWidgetID.AutoIncrement = false;
-            Widgets_ProductsWidgetID.IsForeignKey = true;
-            Widgets_ProductsSchema.Columns.Add(Widgets_ProductsWidgetID);
-
-            IColumn Widgets_ProductsSKU = new DatabaseColumn("SKU",Widgets_ProductsSchema);
-            Widgets_ProductsSKU.IsPrimaryKey = true;
-            Widgets_ProductsSKU.DataType=DbType.String;
-            Widgets_ProductsSKU.IsNullable = false;
-            Widgets_ProductsSKU.AutoIncrement = false;
-            Widgets_ProductsSKU.IsForeignKey = true;
-            Widgets_ProductsSchema.Columns.Add(Widgets_ProductsSKU);
-
-            IColumn Widgets_ProductslistOrder = new DatabaseColumn("listOrder",Widgets_ProductsSchema);
-            Widgets_ProductslistOrder.DataType=DbType.Int32;
-            Widgets_ProductslistOrder.IsNullable = false;
-            Widgets_ProductslistOrder.AutoIncrement = false;
-            Widgets_ProductslistOrder.IsForeignKey = false;
-            Widgets_ProductsSchema.Columns.Add(Widgets_ProductslistOrder);
-
-            DataProvider.Schema.Tables.Add(Widgets_ProductsSchema);
-
-            // Table: Widgets_Groups
-            // Primary Key: WidgetGroupID
-            ITable Widgets_GroupsSchema = new DatabaseTable("Widgets_Groups", DataProvider);
-            Widgets_GroupsSchema.ClassName = "Widgets_Group";
-            IColumn Widgets_GroupsWidgetGroupID = new DatabaseColumn("WidgetGroupID",Widgets_GroupsSchema);
-            Widgets_GroupsWidgetGroupID.IsPrimaryKey = true;
-            Widgets_GroupsWidgetGroupID.DataType=DbType.Guid;
-            Widgets_GroupsWidgetGroupID.IsNullable = false;
-            Widgets_GroupsWidgetGroupID.AutoIncrement = false;
-            Widgets_GroupsWidgetGroupID.IsForeignKey = true;
-            Widgets_GroupsSchema.Columns.Add(Widgets_GroupsWidgetGroupID);
-
-            IColumn Widgets_GroupsName = new DatabaseColumn("Name",Widgets_GroupsSchema);
-            Widgets_GroupsName.DataType=DbType.String;
-            Widgets_GroupsName.IsNullable = false;
-            Widgets_GroupsName.AutoIncrement = false;
-            Widgets_GroupsName.IsForeignKey = false;
-            Widgets_GroupsSchema.Columns.Add(Widgets_GroupsName);
-
-            DataProvider.Schema.Tables.Add(Widgets_GroupsSchema);
-
             // Table: CustomerEvents
             // Primary Key: EventID
             ITable CustomerEventsSchema = new DatabaseTable("CustomerEvents", DataProvider);
@@ -1103,306 +741,26 @@ namespace Kona.Data
 
             DataProvider.Schema.Tables.Add(CustomerEventsSchema);
 
-            // Table: ProductOptionDisplays
-            // Primary Key: OptionDisplayID
-            ITable ProductOptionDisplaysSchema = new DatabaseTable("ProductOptionDisplays", DataProvider);
-            ProductOptionDisplaysSchema.ClassName = "ProductOptionDisplay";
-            IColumn ProductOptionDisplaysOptionDisplayID = new DatabaseColumn("OptionDisplayID",ProductOptionDisplaysSchema);
-            ProductOptionDisplaysOptionDisplayID.IsPrimaryKey = true;
-            ProductOptionDisplaysOptionDisplayID.DataType=DbType.Int32;
-            ProductOptionDisplaysOptionDisplayID.IsNullable = false;
-            ProductOptionDisplaysOptionDisplayID.AutoIncrement = true;
-            ProductOptionDisplaysOptionDisplayID.IsForeignKey = true;
-            ProductOptionDisplaysSchema.Columns.Add(ProductOptionDisplaysOptionDisplayID);
+            // Table: Categories_Widgets
+            // Primary Key: CategoryID
+            ITable Categories_WidgetsSchema = new DatabaseTable("Categories_Widgets", DataProvider);
+            Categories_WidgetsSchema.ClassName = "Categories_Widget";
+            IColumn Categories_WidgetsCategoryID = new DatabaseColumn("CategoryID",Categories_WidgetsSchema);
+            Categories_WidgetsCategoryID.IsPrimaryKey = true;
+            Categories_WidgetsCategoryID.DataType=DbType.Int32;
+            Categories_WidgetsCategoryID.IsNullable = false;
+            Categories_WidgetsCategoryID.AutoIncrement = false;
+            Categories_WidgetsCategoryID.IsForeignKey = true;
+            Categories_WidgetsSchema.Columns.Add(Categories_WidgetsCategoryID);
 
-            IColumn ProductOptionDisplaysHTMLDisplay = new DatabaseColumn("HTMLDisplay",ProductOptionDisplaysSchema);
-            ProductOptionDisplaysHTMLDisplay.DataType=DbType.String;
-            ProductOptionDisplaysHTMLDisplay.IsNullable = false;
-            ProductOptionDisplaysHTMLDisplay.AutoIncrement = false;
-            ProductOptionDisplaysHTMLDisplay.IsForeignKey = false;
-            ProductOptionDisplaysSchema.Columns.Add(ProductOptionDisplaysHTMLDisplay);
+            IColumn Categories_WidgetsWidgetID = new DatabaseColumn("WidgetID",Categories_WidgetsSchema);
+            Categories_WidgetsWidgetID.DataType=DbType.Guid;
+            Categories_WidgetsWidgetID.IsNullable = false;
+            Categories_WidgetsWidgetID.AutoIncrement = false;
+            Categories_WidgetsWidgetID.IsForeignKey = true;
+            Categories_WidgetsSchema.Columns.Add(Categories_WidgetsWidgetID);
 
-            DataProvider.Schema.Tables.Add(ProductOptionDisplaysSchema);
-
-            // Table: Widgets
-            // Primary Key: WidgetID
-            ITable WidgetsSchema = new DatabaseTable("Widgets", DataProvider);
-            WidgetsSchema.ClassName = "Widget";
-            IColumn WidgetsWidgetID = new DatabaseColumn("WidgetID",WidgetsSchema);
-            WidgetsWidgetID.IsPrimaryKey = true;
-            WidgetsWidgetID.DataType=DbType.Guid;
-            WidgetsWidgetID.IsNullable = false;
-            WidgetsWidgetID.AutoIncrement = false;
-            WidgetsWidgetID.IsForeignKey = true;
-            WidgetsSchema.Columns.Add(WidgetsWidgetID);
-
-            IColumn WidgetsPageID = new DatabaseColumn("PageID",WidgetsSchema);
-            WidgetsPageID.DataType=DbType.Guid;
-            WidgetsPageID.IsNullable = true;
-            WidgetsPageID.AutoIncrement = false;
-            WidgetsPageID.IsForeignKey = true;
-            WidgetsSchema.Columns.Add(WidgetsPageID);
-
-            IColumn WidgetsWidgetGroupID = new DatabaseColumn("WidgetGroupID",WidgetsSchema);
-            WidgetsWidgetGroupID.DataType=DbType.Guid;
-            WidgetsWidgetGroupID.IsNullable = true;
-            WidgetsWidgetGroupID.AutoIncrement = false;
-            WidgetsWidgetGroupID.IsForeignKey = true;
-            WidgetsSchema.Columns.Add(WidgetsWidgetGroupID);
-
-            IColumn WidgetsWidgetDefinition = new DatabaseColumn("WidgetDefinition",WidgetsSchema);
-            WidgetsWidgetDefinition.DataType=DbType.String;
-            WidgetsWidgetDefinition.IsNullable = false;
-            WidgetsWidgetDefinition.AutoIncrement = false;
-            WidgetsWidgetDefinition.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsWidgetDefinition);
-
-            IColumn WidgetsListOrder = new DatabaseColumn("ListOrder",WidgetsSchema);
-            WidgetsListOrder.DataType=DbType.Int32;
-            WidgetsListOrder.IsNullable = true;
-            WidgetsListOrder.AutoIncrement = false;
-            WidgetsListOrder.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsListOrder);
-
-            IColumn WidgetsWidgetGroupListOrder = new DatabaseColumn("WidgetGroupListOrder",WidgetsSchema);
-            WidgetsWidgetGroupListOrder.DataType=DbType.Int32;
-            WidgetsWidgetGroupListOrder.IsNullable = true;
-            WidgetsWidgetGroupListOrder.AutoIncrement = false;
-            WidgetsWidgetGroupListOrder.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsWidgetGroupListOrder);
-
-            IColumn WidgetsZone = new DatabaseColumn("Zone",WidgetsSchema);
-            WidgetsZone.DataType=DbType.String;
-            WidgetsZone.IsNullable = true;
-            WidgetsZone.AutoIncrement = false;
-            WidgetsZone.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsZone);
-
-            IColumn WidgetsTitle = new DatabaseColumn("Title",WidgetsSchema);
-            WidgetsTitle.DataType=DbType.String;
-            WidgetsTitle.IsNullable = true;
-            WidgetsTitle.AutoIncrement = false;
-            WidgetsTitle.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsTitle);
-
-            IColumn WidgetsBody = new DatabaseColumn("Body",WidgetsSchema);
-            WidgetsBody.DataType=DbType.String;
-            WidgetsBody.IsNullable = true;
-            WidgetsBody.AutoIncrement = false;
-            WidgetsBody.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsBody);
-
-            IColumn WidgetsLanguageCode = new DatabaseColumn("LanguageCode",WidgetsSchema);
-            WidgetsLanguageCode.DataType=DbType.AnsiStringFixedLength;
-            WidgetsLanguageCode.IsNullable = false;
-            WidgetsLanguageCode.AutoIncrement = false;
-            WidgetsLanguageCode.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsLanguageCode);
-
-            IColumn WidgetsIsTyped = new DatabaseColumn("IsTyped",WidgetsSchema);
-            WidgetsIsTyped.DataType=DbType.Boolean;
-            WidgetsIsTyped.IsNullable = false;
-            WidgetsIsTyped.AutoIncrement = false;
-            WidgetsIsTyped.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsIsTyped);
-
-            IColumn WidgetsCreatedOn = new DatabaseColumn("CreatedOn",WidgetsSchema);
-            WidgetsCreatedOn.DataType=DbType.DateTime;
-            WidgetsCreatedOn.IsNullable = false;
-            WidgetsCreatedOn.AutoIncrement = false;
-            WidgetsCreatedOn.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsCreatedOn);
-
-            IColumn WidgetsModifiedOn = new DatabaseColumn("ModifiedOn",WidgetsSchema);
-            WidgetsModifiedOn.DataType=DbType.DateTime;
-            WidgetsModifiedOn.IsNullable = false;
-            WidgetsModifiedOn.AutoIncrement = false;
-            WidgetsModifiedOn.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsModifiedOn);
-
-            IColumn WidgetsCreatedBy = new DatabaseColumn("CreatedBy",WidgetsSchema);
-            WidgetsCreatedBy.DataType=DbType.String;
-            WidgetsCreatedBy.IsNullable = true;
-            WidgetsCreatedBy.AutoIncrement = false;
-            WidgetsCreatedBy.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsCreatedBy);
-
-            IColumn WidgetsModifiedBy = new DatabaseColumn("ModifiedBy",WidgetsSchema);
-            WidgetsModifiedBy.DataType=DbType.String;
-            WidgetsModifiedBy.IsNullable = true;
-            WidgetsModifiedBy.AutoIncrement = false;
-            WidgetsModifiedBy.IsForeignKey = false;
-            WidgetsSchema.Columns.Add(WidgetsModifiedBy);
-
-            DataProvider.Schema.Tables.Add(WidgetsSchema);
-
-            // Table: ProductOptions
-            // Primary Key: OptionID
-            ITable ProductOptionsSchema = new DatabaseTable("ProductOptions", DataProvider);
-            ProductOptionsSchema.ClassName = "ProductOption";
-            IColumn ProductOptionsOptionID = new DatabaseColumn("OptionID",ProductOptionsSchema);
-            ProductOptionsOptionID.IsPrimaryKey = true;
-            ProductOptionsOptionID.DataType=DbType.Int32;
-            ProductOptionsOptionID.IsNullable = false;
-            ProductOptionsOptionID.AutoIncrement = true;
-            ProductOptionsOptionID.IsForeignKey = true;
-            ProductOptionsSchema.Columns.Add(ProductOptionsOptionID);
-
-            IColumn ProductOptionsDescription = new DatabaseColumn("Description",ProductOptionsSchema);
-            ProductOptionsDescription.DataType=DbType.String;
-            ProductOptionsDescription.IsNullable = false;
-            ProductOptionsDescription.AutoIncrement = false;
-            ProductOptionsDescription.IsForeignKey = false;
-            ProductOptionsSchema.Columns.Add(ProductOptionsDescription);
-
-            IColumn ProductOptionsLanguageCode = new DatabaseColumn("LanguageCode",ProductOptionsSchema);
-            ProductOptionsLanguageCode.DataType=DbType.AnsiStringFixedLength;
-            ProductOptionsLanguageCode.IsNullable = false;
-            ProductOptionsLanguageCode.AutoIncrement = false;
-            ProductOptionsLanguageCode.IsForeignKey = false;
-            ProductOptionsSchema.Columns.Add(ProductOptionsLanguageCode);
-
-            IColumn ProductOptionsDisplayID = new DatabaseColumn("DisplayID",ProductOptionsSchema);
-            ProductOptionsDisplayID.DataType=DbType.Int32;
-            ProductOptionsDisplayID.IsNullable = false;
-            ProductOptionsDisplayID.AutoIncrement = false;
-            ProductOptionsDisplayID.IsForeignKey = true;
-            ProductOptionsSchema.Columns.Add(ProductOptionsDisplayID);
-
-            IColumn ProductOptionsPrompt = new DatabaseColumn("Prompt",ProductOptionsSchema);
-            ProductOptionsPrompt.DataType=DbType.String;
-            ProductOptionsPrompt.IsNullable = false;
-            ProductOptionsPrompt.AutoIncrement = false;
-            ProductOptionsPrompt.IsForeignKey = false;
-            ProductOptionsSchema.Columns.Add(ProductOptionsPrompt);
-
-            DataProvider.Schema.Tables.Add(ProductOptionsSchema);
-
-            // Table: ProductOptionValues
-            // Primary Key: OptionValueID
-            ITable ProductOptionValuesSchema = new DatabaseTable("ProductOptionValues", DataProvider);
-            ProductOptionValuesSchema.ClassName = "ProductOptionValue";
-            IColumn ProductOptionValuesOptionValueID = new DatabaseColumn("OptionValueID",ProductOptionValuesSchema);
-            ProductOptionValuesOptionValueID.IsPrimaryKey = true;
-            ProductOptionValuesOptionValueID.DataType=DbType.Int32;
-            ProductOptionValuesOptionValueID.IsNullable = false;
-            ProductOptionValuesOptionValueID.AutoIncrement = true;
-            ProductOptionValuesOptionValueID.IsForeignKey = true;
-            ProductOptionValuesSchema.Columns.Add(ProductOptionValuesOptionValueID);
-
-            IColumn ProductOptionValuesOptionID = new DatabaseColumn("OptionID",ProductOptionValuesSchema);
-            ProductOptionValuesOptionID.DataType=DbType.Int32;
-            ProductOptionValuesOptionID.IsNullable = false;
-            ProductOptionValuesOptionID.AutoIncrement = false;
-            ProductOptionValuesOptionID.IsForeignKey = true;
-            ProductOptionValuesSchema.Columns.Add(ProductOptionValuesOptionID);
-
-            IColumn ProductOptionValuesDescription = new DatabaseColumn("Description",ProductOptionValuesSchema);
-            ProductOptionValuesDescription.DataType=DbType.String;
-            ProductOptionValuesDescription.IsNullable = false;
-            ProductOptionValuesDescription.AutoIncrement = false;
-            ProductOptionValuesDescription.IsForeignKey = false;
-            ProductOptionValuesSchema.Columns.Add(ProductOptionValuesDescription);
-
-            DataProvider.Schema.Tables.Add(ProductOptionValuesSchema);
-
-            // Table: Renaud
-            // Primary Key: ID
-            ITable RenaudSchema = new DatabaseTable("Renaud", DataProvider);
-            RenaudSchema.ClassName = "Renaud";
-            IColumn RenaudID = new DatabaseColumn("ID",RenaudSchema);
-            RenaudID.IsPrimaryKey = true;
-            RenaudID.DataType=DbType.Int32;
-            RenaudID.IsNullable = false;
-            RenaudID.AutoIncrement = false;
-            RenaudID.IsForeignKey = false;
-            RenaudSchema.Columns.Add(RenaudID);
-
-            IColumn RenaudName = new DatabaseColumn("Name",RenaudSchema);
-            RenaudName.DataType=DbType.String;
-            RenaudName.IsNullable = true;
-            RenaudName.AutoIncrement = false;
-            RenaudName.IsForeignKey = false;
-            RenaudSchema.Columns.Add(RenaudName);
-
-            DataProvider.Schema.Tables.Add(RenaudSchema);
-
-            // Table: Products_Options
-            // Primary Key: OptionID
-            ITable Products_OptionsSchema = new DatabaseTable("Products_Options", DataProvider);
-            Products_OptionsSchema.ClassName = "Products_Option";
-            IColumn Products_OptionsSKU = new DatabaseColumn("SKU",Products_OptionsSchema);
-            Products_OptionsSKU.DataType=DbType.String;
-            Products_OptionsSKU.IsNullable = false;
-            Products_OptionsSKU.AutoIncrement = false;
-            Products_OptionsSKU.IsForeignKey = true;
-            Products_OptionsSchema.Columns.Add(Products_OptionsSKU);
-
-            IColumn Products_OptionsOptionID = new DatabaseColumn("OptionID",Products_OptionsSchema);
-            Products_OptionsOptionID.IsPrimaryKey = true;
-            Products_OptionsOptionID.DataType=DbType.Int32;
-            Products_OptionsOptionID.IsNullable = false;
-            Products_OptionsOptionID.AutoIncrement = false;
-            Products_OptionsOptionID.IsForeignKey = true;
-            Products_OptionsSchema.Columns.Add(Products_OptionsOptionID);
-
-            IColumn Products_OptionsOptionValueID = new DatabaseColumn("OptionValueID",Products_OptionsSchema);
-            Products_OptionsOptionValueID.DataType=DbType.Int32;
-            Products_OptionsOptionValueID.IsNullable = false;
-            Products_OptionsOptionValueID.AutoIncrement = false;
-            Products_OptionsOptionValueID.IsForeignKey = true;
-            Products_OptionsSchema.Columns.Add(Products_OptionsOptionValueID);
-
-            DataProvider.Schema.Tables.Add(Products_OptionsSchema);
-
-            // Table: CartItems
-            // Primary Key: SKU
-            ITable CartItemsSchema = new DatabaseTable("CartItems", DataProvider);
-            CartItemsSchema.ClassName = "CartItem";
-            IColumn CartItemsSKU = new DatabaseColumn("SKU",CartItemsSchema);
-            CartItemsSKU.IsPrimaryKey = true;
-            CartItemsSKU.DataType=DbType.String;
-            CartItemsSKU.IsNullable = false;
-            CartItemsSKU.AutoIncrement = false;
-            CartItemsSKU.IsForeignKey = true;
-            CartItemsSchema.Columns.Add(CartItemsSKU);
-
-            IColumn CartItemsUserName = new DatabaseColumn("UserName",CartItemsSchema);
-            CartItemsUserName.DataType=DbType.String;
-            CartItemsUserName.IsNullable = false;
-            CartItemsUserName.AutoIncrement = false;
-            CartItemsUserName.IsForeignKey = true;
-            CartItemsSchema.Columns.Add(CartItemsUserName);
-
-            IColumn CartItemsQuantity = new DatabaseColumn("Quantity",CartItemsSchema);
-            CartItemsQuantity.DataType=DbType.Int32;
-            CartItemsQuantity.IsNullable = false;
-            CartItemsQuantity.AutoIncrement = false;
-            CartItemsQuantity.IsForeignKey = false;
-            CartItemsSchema.Columns.Add(CartItemsQuantity);
-
-            IColumn CartItemsDateAdded = new DatabaseColumn("DateAdded",CartItemsSchema);
-            CartItemsDateAdded.DataType=DbType.DateTime;
-            CartItemsDateAdded.IsNullable = false;
-            CartItemsDateAdded.AutoIncrement = false;
-            CartItemsDateAdded.IsForeignKey = false;
-            CartItemsSchema.Columns.Add(CartItemsDateAdded);
-
-            IColumn CartItemsDiscountAmount = new DatabaseColumn("DiscountAmount",CartItemsSchema);
-            CartItemsDiscountAmount.DataType=DbType.Decimal;
-            CartItemsDiscountAmount.IsNullable = false;
-            CartItemsDiscountAmount.AutoIncrement = false;
-            CartItemsDiscountAmount.IsForeignKey = false;
-            CartItemsSchema.Columns.Add(CartItemsDiscountAmount);
-
-            IColumn CartItemsDiscountReason = new DatabaseColumn("DiscountReason",CartItemsSchema);
-            CartItemsDiscountReason.DataType=DbType.String;
-            CartItemsDiscountReason.IsNullable = true;
-            CartItemsDiscountReason.AutoIncrement = false;
-            CartItemsDiscountReason.IsForeignKey = false;
-            CartItemsSchema.Columns.Add(CartItemsDiscountReason);
-
-            DataProvider.Schema.Tables.Add(CartItemsSchema);
+            DataProvider.Schema.Tables.Add(Categories_WidgetsSchema);
 
             // Table: OrderItems
             // Primary Key: OrderID
@@ -1467,6 +825,160 @@ namespace Kona.Data
 
             DataProvider.Schema.Tables.Add(OrderItemsSchema);
 
+            // Table: CategoryLocalized
+            // Primary Key: CategoryNameID
+            ITable CategoryLocalizedSchema = new DatabaseTable("CategoryLocalized", DataProvider);
+            CategoryLocalizedSchema.ClassName = "CategoryLocalized";
+            IColumn CategoryLocalizedCategoryNameID = new DatabaseColumn("CategoryNameID",CategoryLocalizedSchema);
+            CategoryLocalizedCategoryNameID.IsPrimaryKey = true;
+            CategoryLocalizedCategoryNameID.DataType=DbType.Int32;
+            CategoryLocalizedCategoryNameID.IsNullable = false;
+            CategoryLocalizedCategoryNameID.AutoIncrement = true;
+            CategoryLocalizedCategoryNameID.IsForeignKey = false;
+            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedCategoryNameID);
+
+            IColumn CategoryLocalizedCategoryID = new DatabaseColumn("CategoryID",CategoryLocalizedSchema);
+            CategoryLocalizedCategoryID.DataType=DbType.Int32;
+            CategoryLocalizedCategoryID.IsNullable = false;
+            CategoryLocalizedCategoryID.AutoIncrement = false;
+            CategoryLocalizedCategoryID.IsForeignKey = true;
+            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedCategoryID);
+
+            IColumn CategoryLocalizedLanguageCode = new DatabaseColumn("LanguageCode",CategoryLocalizedSchema);
+            CategoryLocalizedLanguageCode.DataType=DbType.AnsiStringFixedLength;
+            CategoryLocalizedLanguageCode.IsNullable = false;
+            CategoryLocalizedLanguageCode.AutoIncrement = false;
+            CategoryLocalizedLanguageCode.IsForeignKey = false;
+            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedLanguageCode);
+
+            IColumn CategoryLocalizedName = new DatabaseColumn("Name",CategoryLocalizedSchema);
+            CategoryLocalizedName.DataType=DbType.String;
+            CategoryLocalizedName.IsNullable = false;
+            CategoryLocalizedName.AutoIncrement = false;
+            CategoryLocalizedName.IsForeignKey = false;
+            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedName);
+
+            IColumn CategoryLocalizedSlug = new DatabaseColumn("Slug",CategoryLocalizedSchema);
+            CategoryLocalizedSlug.DataType=DbType.String;
+            CategoryLocalizedSlug.IsNullable = false;
+            CategoryLocalizedSlug.AutoIncrement = false;
+            CategoryLocalizedSlug.IsForeignKey = false;
+            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedSlug);
+
+            IColumn CategoryLocalizedDefaultImageFile = new DatabaseColumn("DefaultImageFile",CategoryLocalizedSchema);
+            CategoryLocalizedDefaultImageFile.DataType=DbType.String;
+            CategoryLocalizedDefaultImageFile.IsNullable = true;
+            CategoryLocalizedDefaultImageFile.AutoIncrement = false;
+            CategoryLocalizedDefaultImageFile.IsForeignKey = false;
+            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedDefaultImageFile);
+
+            IColumn CategoryLocalizedDescription = new DatabaseColumn("Description",CategoryLocalizedSchema);
+            CategoryLocalizedDescription.DataType=DbType.String;
+            CategoryLocalizedDescription.IsNullable = true;
+            CategoryLocalizedDescription.AutoIncrement = false;
+            CategoryLocalizedDescription.IsForeignKey = false;
+            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedDescription);
+
+            IColumn CategoryLocalizedIsHome = new DatabaseColumn("IsHome",CategoryLocalizedSchema);
+            CategoryLocalizedIsHome.DataType=DbType.Boolean;
+            CategoryLocalizedIsHome.IsNullable = false;
+            CategoryLocalizedIsHome.AutoIncrement = false;
+            CategoryLocalizedIsHome.IsForeignKey = false;
+            CategoryLocalizedSchema.Columns.Add(CategoryLocalizedIsHome);
+
+            DataProvider.Schema.Tables.Add(CategoryLocalizedSchema);
+
+            // Table: Widgets
+            // Primary Key: WidgetID
+            ITable WidgetsSchema = new DatabaseTable("Widgets", DataProvider);
+            WidgetsSchema.ClassName = "Widget";
+            IColumn WidgetsWidgetID = new DatabaseColumn("WidgetID",WidgetsSchema);
+            WidgetsWidgetID.IsPrimaryKey = true;
+            WidgetsWidgetID.DataType=DbType.Guid;
+            WidgetsWidgetID.IsNullable = false;
+            WidgetsWidgetID.AutoIncrement = false;
+            WidgetsWidgetID.IsForeignKey = true;
+            WidgetsSchema.Columns.Add(WidgetsWidgetID);
+
+            IColumn WidgetsListOrder = new DatabaseColumn("ListOrder",WidgetsSchema);
+            WidgetsListOrder.DataType=DbType.Int32;
+            WidgetsListOrder.IsNullable = true;
+            WidgetsListOrder.AutoIncrement = false;
+            WidgetsListOrder.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsListOrder);
+
+            IColumn WidgetsZone = new DatabaseColumn("Zone",WidgetsSchema);
+            WidgetsZone.DataType=DbType.String;
+            WidgetsZone.IsNullable = true;
+            WidgetsZone.AutoIncrement = false;
+            WidgetsZone.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsZone);
+
+            IColumn WidgetsTitle = new DatabaseColumn("Title",WidgetsSchema);
+            WidgetsTitle.DataType=DbType.String;
+            WidgetsTitle.IsNullable = true;
+            WidgetsTitle.AutoIncrement = false;
+            WidgetsTitle.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsTitle);
+
+            IColumn WidgetsBody = new DatabaseColumn("Body",WidgetsSchema);
+            WidgetsBody.DataType=DbType.String;
+            WidgetsBody.IsNullable = true;
+            WidgetsBody.AutoIncrement = false;
+            WidgetsBody.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsBody);
+
+            IColumn WidgetsSKUList = new DatabaseColumn("SKUList",WidgetsSchema);
+            WidgetsSKUList.DataType=DbType.String;
+            WidgetsSKUList.IsNullable = true;
+            WidgetsSKUList.AutoIncrement = false;
+            WidgetsSKUList.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsSKUList);
+
+            IColumn WidgetsViewName = new DatabaseColumn("ViewName",WidgetsSchema);
+            WidgetsViewName.DataType=DbType.String;
+            WidgetsViewName.IsNullable = true;
+            WidgetsViewName.AutoIncrement = false;
+            WidgetsViewName.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsViewName);
+
+            IColumn WidgetsLanguageCode = new DatabaseColumn("LanguageCode",WidgetsSchema);
+            WidgetsLanguageCode.DataType=DbType.AnsiStringFixedLength;
+            WidgetsLanguageCode.IsNullable = false;
+            WidgetsLanguageCode.AutoIncrement = false;
+            WidgetsLanguageCode.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsLanguageCode);
+
+            IColumn WidgetsCreatedOn = new DatabaseColumn("CreatedOn",WidgetsSchema);
+            WidgetsCreatedOn.DataType=DbType.DateTime;
+            WidgetsCreatedOn.IsNullable = false;
+            WidgetsCreatedOn.AutoIncrement = false;
+            WidgetsCreatedOn.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsCreatedOn);
+
+            IColumn WidgetsModifiedOn = new DatabaseColumn("ModifiedOn",WidgetsSchema);
+            WidgetsModifiedOn.DataType=DbType.DateTime;
+            WidgetsModifiedOn.IsNullable = false;
+            WidgetsModifiedOn.AutoIncrement = false;
+            WidgetsModifiedOn.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsModifiedOn);
+
+            IColumn WidgetsCreatedBy = new DatabaseColumn("CreatedBy",WidgetsSchema);
+            WidgetsCreatedBy.DataType=DbType.String;
+            WidgetsCreatedBy.IsNullable = true;
+            WidgetsCreatedBy.AutoIncrement = false;
+            WidgetsCreatedBy.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsCreatedBy);
+
+            IColumn WidgetsModifiedBy = new DatabaseColumn("ModifiedBy",WidgetsSchema);
+            WidgetsModifiedBy.DataType=DbType.String;
+            WidgetsModifiedBy.IsNullable = true;
+            WidgetsModifiedBy.AutoIncrement = false;
+            WidgetsModifiedBy.IsForeignKey = false;
+            WidgetsSchema.Columns.Add(WidgetsModifiedBy);
+
+            DataProvider.Schema.Tables.Add(WidgetsSchema);
+
             // Table: Products
             // Primary Key: SKU
             ITable ProductsSchema = new DatabaseTable("Products", DataProvider);
@@ -1490,7 +1002,7 @@ namespace Kona.Data
             ProductsDeliveryMethodID.DataType=DbType.Int32;
             ProductsDeliveryMethodID.IsNullable = false;
             ProductsDeliveryMethodID.AutoIncrement = false;
-            ProductsDeliveryMethodID.IsForeignKey = true;
+            ProductsDeliveryMethodID.IsForeignKey = false;
             ProductsSchema.Columns.Add(ProductsDeliveryMethodID);
 
             IColumn ProductsProductName = new DatabaseColumn("ProductName",ProductsSchema);
@@ -1712,62 +1224,6 @@ namespace Kona.Data
 
             DataProvider.Schema.Tables.Add(OrdersSchema);
 
-            // Table: ShippingMethods
-            // Primary Key: ShippingMethodID
-            ITable ShippingMethodsSchema = new DatabaseTable("ShippingMethods", DataProvider);
-            ShippingMethodsSchema.ClassName = "ShippingMethod";
-            IColumn ShippingMethodsShippingMethodID = new DatabaseColumn("ShippingMethodID",ShippingMethodsSchema);
-            ShippingMethodsShippingMethodID.IsPrimaryKey = true;
-            ShippingMethodsShippingMethodID.DataType=DbType.Int32;
-            ShippingMethodsShippingMethodID.IsNullable = false;
-            ShippingMethodsShippingMethodID.AutoIncrement = false;
-            ShippingMethodsShippingMethodID.IsForeignKey = false;
-            ShippingMethodsSchema.Columns.Add(ShippingMethodsShippingMethodID);
-
-            IColumn ShippingMethodsCarrier = new DatabaseColumn("Carrier",ShippingMethodsSchema);
-            ShippingMethodsCarrier.DataType=DbType.String;
-            ShippingMethodsCarrier.IsNullable = false;
-            ShippingMethodsCarrier.AutoIncrement = false;
-            ShippingMethodsCarrier.IsForeignKey = false;
-            ShippingMethodsSchema.Columns.Add(ShippingMethodsCarrier);
-
-            IColumn ShippingMethodsServiceName = new DatabaseColumn("ServiceName",ShippingMethodsSchema);
-            ShippingMethodsServiceName.DataType=DbType.String;
-            ShippingMethodsServiceName.IsNullable = false;
-            ShippingMethodsServiceName.AutoIncrement = false;
-            ShippingMethodsServiceName.IsForeignKey = false;
-            ShippingMethodsSchema.Columns.Add(ShippingMethodsServiceName);
-
-            IColumn ShippingMethodsRatePerPound = new DatabaseColumn("RatePerPound",ShippingMethodsSchema);
-            ShippingMethodsRatePerPound.DataType=DbType.Decimal;
-            ShippingMethodsRatePerPound.IsNullable = false;
-            ShippingMethodsRatePerPound.AutoIncrement = false;
-            ShippingMethodsRatePerPound.IsForeignKey = false;
-            ShippingMethodsSchema.Columns.Add(ShippingMethodsRatePerPound);
-
-            IColumn ShippingMethodsBaseRate = new DatabaseColumn("BaseRate",ShippingMethodsSchema);
-            ShippingMethodsBaseRate.DataType=DbType.Decimal;
-            ShippingMethodsBaseRate.IsNullable = false;
-            ShippingMethodsBaseRate.AutoIncrement = false;
-            ShippingMethodsBaseRate.IsForeignKey = false;
-            ShippingMethodsSchema.Columns.Add(ShippingMethodsBaseRate);
-
-            IColumn ShippingMethodsEstimatedDelivery = new DatabaseColumn("EstimatedDelivery",ShippingMethodsSchema);
-            ShippingMethodsEstimatedDelivery.DataType=DbType.String;
-            ShippingMethodsEstimatedDelivery.IsNullable = true;
-            ShippingMethodsEstimatedDelivery.AutoIncrement = false;
-            ShippingMethodsEstimatedDelivery.IsForeignKey = false;
-            ShippingMethodsSchema.Columns.Add(ShippingMethodsEstimatedDelivery);
-
-            IColumn ShippingMethodsDaysToDeliver = new DatabaseColumn("DaysToDeliver",ShippingMethodsSchema);
-            ShippingMethodsDaysToDeliver.DataType=DbType.Int32;
-            ShippingMethodsDaysToDeliver.IsNullable = false;
-            ShippingMethodsDaysToDeliver.AutoIncrement = false;
-            ShippingMethodsDaysToDeliver.IsForeignKey = false;
-            ShippingMethodsSchema.Columns.Add(ShippingMethodsDaysToDeliver);
-
-            DataProvider.Schema.Tables.Add(ShippingMethodsSchema);
-
             // Table: Categories
             // Primary Key: CategoryID
             ITable CategoriesSchema = new DatabaseTable("Categories", DataProvider);
@@ -1779,13 +1235,6 @@ namespace Kona.Data
             CategoriesCategoryID.AutoIncrement = true;
             CategoriesCategoryID.IsForeignKey = true;
             CategoriesSchema.Columns.Add(CategoriesCategoryID);
-
-            IColumn CategoriesSiteID = new DatabaseColumn("SiteID",CategoriesSchema);
-            CategoriesSiteID.DataType=DbType.Guid;
-            CategoriesSiteID.IsNullable = true;
-            CategoriesSiteID.AutoIncrement = false;
-            CategoriesSiteID.IsForeignKey = false;
-            CategoriesSchema.Columns.Add(CategoriesSiteID);
 
             IColumn CategoriesParentID = new DatabaseColumn("ParentID",CategoriesSchema);
             CategoriesParentID.DataType=DbType.Int32;
