@@ -2463,7 +2463,7 @@
             Deletes the T item  by Primary Key
             </summary>
         </member>
-        <member name="M:SubSonic.SubSonicRepository`1.Delete(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+        <member name="M:SubSonic.SubSonicRepository`1.DeleteMany(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
             Deletes 0 to n T items from the Chinook Database based on the passed-in Expression
             </summary>
@@ -3735,6 +3735,13 @@
             <summary>
             Coerces an IDataReader to try and load an object using name/property matching
             </summary>
+        </member>
+        <member name="M:SubSonic.Extensions.Database.ToEnumerable``1(System.Data.IDataReader)">
+            <summary>
+            Coerces an IDataReader to load an enumerable of T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="rdr"></param>
         </member>
         <member name="M:SubSonic.Extensions.Database.ToList``1(System.Data.IDataReader)">
             <summary>

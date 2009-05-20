@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Widget>" %>
 
     <script type="text/javascript">
-        $('#sku_<%=Model.WidgetID%>').autocomplete("/page/skulist/", {
+        $('#sku_<%=Model.WidgetID%>').autocomplete("/widget/skulist/", {
             mustMatch: 1
         });
         $('#imgholder_<%=Model.WidgetID%>').sortable({
@@ -12,7 +12,7 @@
 
         function addPic() {
             var sku = $('#sku_<%=Model.WidgetID %>').val();
-            $.getJSON("/page/getproduct/?id=" + sku,
+            $.getJSON("/widget/getproduct/?id=" + sku,
                 function(data) {
                     var product = "<li id='" + sku + "'><img src='/content/productimages/" + data.Photo + "' /><br />";
                     product += "<a href='/home/show/?sku=" + sku + "' >" + data.ProductName + "</a>: <br />" + data.Price + "</li>";

@@ -1,8 +1,8 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IWidget>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Widget>" %>
 
-<div id='<%=Model.ID%>' class="sorthandle">
+<div id='<%=Model.WidgetID%>' class="sorthandle">
     <div style="height:15px; background-color:#f5f5f5;text-align:right;padding:2px;cursor:hand">
-        <img src="/content/icons/cancel.png" onclick="removeWidget('<%=Model.ID%>')"/>
+        <img src="/content/icons/cancel.png" onclick="removeWidget('<%=Model.WidgetID%>')"/>
     </div>
     <div class="leftnavMod">
         <h6>Recently Viewed</h6>

@@ -283,4 +283,9 @@ ul.topNav li a
 
 
 
+/* product results
+----------------------------------------------------------*/
+ul.product-results { margin:14px; }
+ul.product-results li { list-style:none; width:180px; float:left; margin-left:7px; height:215px; text-align:center;}
+ul.product-results li h3 { font-size:100%; }
 

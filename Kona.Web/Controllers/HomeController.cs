@@ -32,12 +32,34 @@ namespace Kona.Web.Controllers {
             this.SelectedProduct = new Product(sku);
             return View("Detail");
         }
-
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(string slug) {
             slug = slug ?? "";
             this.CurrentCategory = Category.GetCategoryPage(slug);
             return View("EditCategory",this.CurrentCategory);
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Edit(string slug, FormCollection form) {
+
+            //pull it - this is the localized stuff
+            //user can't edit other things
+            CategoryLocalized loc = new CategoryLocalized(x => x.Slug == slug);
+
+            //update it - the only thing people can change is the title/slug
+            //so make sure it gets saved to the localized stuff
+            UpdateModel<CategoryLocalized>(loc);
+
+            //save it
+            loc.Update(User.Identity.Name);
+
+            if (!Request.IsAjaxRequest()) {
+                return RedirectToAction("Index", new { slug = slug });
+            } else {
+                return new EmptyResult();
+            }
+        }
+
 
         public ActionResult About() {
             return View();

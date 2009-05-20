@@ -432,7 +432,7 @@ namespace <#=Namespace #>
             
         }
 
-        public static void Delete(Func<<#=tbl.ClassName#>, bool> expression) {
+        public static void Delete(Expression<Func<<#=tbl.ClassName#>, bool>> expression) {
             var repo = GetRepo();
             
             <#if(tbl.HasLogicalDelete()){#>
@@ -443,7 +443,7 @@ namespace <#=Namespace #>
             
             <#}else{#>       
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
             <#}#>
         }

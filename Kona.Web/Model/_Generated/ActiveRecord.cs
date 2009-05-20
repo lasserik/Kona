@@ -457,12 +457,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Customer, bool> expression) {
+        public static void Delete(Expression<Func<Customer, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -839,12 +839,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<CustomerBehavior, bool> expression) {
+        public static void Delete(Expression<Func<CustomerBehavior, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -1478,12 +1478,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Address, bool> expression) {
+        public static void Delete(Expression<Func<Address, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -1880,12 +1880,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Categories_Product, bool> expression) {
+        public static void Delete(Expression<Func<Categories_Product, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -2282,12 +2282,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Products_CrossSell, bool> expression) {
+        public static void Delete(Expression<Func<Products_CrossSell, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -2684,12 +2684,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Products_Related, bool> expression) {
+        public static void Delete(Expression<Func<Products_Related, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -3103,12 +3103,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<ProductImage, bool> expression) {
+        public static void Delete(Expression<Func<ProductImage, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -3558,12 +3558,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<ProductDescriptor, bool> expression) {
+        public static void Delete(Expression<Func<ProductDescriptor, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -3995,12 +3995,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<InventoryRecord, bool> expression) {
+        public static void Delete(Expression<Func<InventoryRecord, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -4467,12 +4467,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Transaction, bool> expression) {
+        public static void Delete(Expression<Func<Transaction, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -4978,12 +4978,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<CustomerEvent, bool> expression) {
+        public static void Delete(Expression<Func<CustomerEvent, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -5380,12 +5380,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Categories_Widget, bool> expression) {
+        public static void Delete(Expression<Func<Categories_Widget, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -5890,12 +5890,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<OrderItem, bool> expression) {
+        public static void Delete(Expression<Func<OrderItem, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -6381,12 +6381,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<CategoryLocalized, bool> expression) {
+        public static void Delete(Expression<Func<CategoryLocalized, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -6958,12 +6958,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Widget, bool> expression) {
+        public static void Delete(Expression<Func<Widget, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -7736,12 +7736,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Product, bool> expression) {
+        public static void Delete(Expression<Func<Product, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -8514,12 +8514,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Order, bool> expression) {
+        public static void Delete(Expression<Func<Order, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -8973,12 +8973,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<Category, bool> expression) {
+        public static void Delete(Expression<Func<Category, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 
@@ -9356,12 +9356,12 @@ namespace Kona.Data
                         
         }
 
-        public static void Delete(Func<InventoryStatus, bool> expression) {
+        public static void Delete(Expression<Func<InventoryStatus, bool>> expression) {
             var repo = GetRepo();
             
                    
             
-            repo.Delete(expression);
+            repo.DeleteMany(expression);
             
                     }
 

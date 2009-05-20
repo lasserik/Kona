@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using Kona.Data;
 using System.Data.Common;
+using Kona.Infrastructure;
+using System.Text;
 
 namespace Kona.Web.Controllers
 {
@@ -55,17 +57,8 @@ namespace Kona.Web.Controllers
             Widget newWidget = new Widget();
             UpdateModel<Widget>(newWidget);
 
-            //TODO: wrap me in a transaction yo!
-
             //the category ID should be sent in as "categoryid"
             string categoryID = form["CategoryID"];
-
-            newWidget.WidgetID = Guid.NewGuid();
-            newWidget.LanguageCode = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            newWidget.ListOrder = 0;
-            newWidget.Title = "";
-            newWidget.Body = "";
-            newWidget.SKUList = "";
  
             var widgetCommand = newWidget.GetInsertCommand();
 
@@ -90,18 +83,96 @@ namespace Kona.Web.Controllers
         // POST: /Widget/Edit/5
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+            Guid widgetID = new Guid(id);
+            
+            //pull the widget
+            Widget w = Widget.SingleOrDefault(x =>x.WidgetID==widgetID);
+            if (w != null) {
+
+                //update it
+                UpdateModel<Widget>(w);
+
+                //save
+                w.Update(User.Identity.Name);
+
             }
-            catch
-            {
-                return View();
+            return new EmptyResult();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public void Delete(string id) {
+
+            Guid widgetID = new Guid(id);
+
+            //delete associations
+            Categories_Widget.Delete(x => x.WidgetID == widgetID);
+
+            //delete the widget
+            Widget.Delete(widgetID);
+
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public void SaveWidgetOrder() {
+
+            var commands = new List<DbCommand>();
+            KonaDB db = new KonaDB();
+
+            if (Request.Form["widgetid"] != null) {
+                //pull out all widgetid's
+                var ids = Request.Form.GetValues("widgetid").Where(x => !String.IsNullOrEmpty(x)).ToArray();
+                int listOrder = 0;
+                foreach (var id in ids) {
+                    var widgetID = new Guid(id);
+                    //subsonic style...
+                    commands.Add(db.Update<Widget>().Set(x => x.ListOrder == listOrder).Where(x=>x.WidgetID==widgetID).GetCommand().ToDbCommand());
+                    listOrder++;
+                }
             }
+            //transaction :)
+            db.ExecuteTransaction(commands);
+
+        }
+
+        public string SkuList() {
+            var pref = Request.QueryString["q"] ?? "";
+            var products = Product.Find(x => x.SKU.StartsWith(pref, StringComparison.CurrentCultureIgnoreCase)).OrderBy(x => x.SKU).ToList();
+            StringBuilder sb = new StringBuilder();
+            products.ForEach(x => sb.Append(x.SKU + "\r\n"));
+            return sb.ToString();
+        }
+
+        public ActionResult GetProduct(string id) {
+            var product = Product.SingleOrDefault(x => x.SKU == id);
+            if (product != null) {
+
+                return Json(new
+                {
+                    SKU=product.SKU,
+                    Photo=product.DefaultImageFile,
+                    ProductName=product.ProductName,
+                    Price=product.BasePrice.ToString("C")
+                });
+            } else {
+                return new EmptyResult();
+            }
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult SaveProductWidget() {
+
+            var widgetID = Request.Form["widgetid"] ?? "";
+            if (!string.IsNullOrEmpty(widgetID)) {
+
+                //pull out all sku's
+                var skus = Request.Form.GetValues("sku");
+                var widget = new Widget(new Guid(widgetID));
+                widget.SKUList = skus.ToString();
+                widget.Update(User.Identity.Name);
+
+            }
+            return new EmptyResult();
         }
     }
 }

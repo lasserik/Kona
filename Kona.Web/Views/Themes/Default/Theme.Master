@@ -50,9 +50,9 @@
     <ul class="topNav" id="menulist">
           <%
               //IEnumerable<Kona.Data.Page> parentPages = Kona.Data.Page.GetParentPages();
-            //foreach (var pg in parentPages) {%>
-            <li id="<%//=pg.PageID%>" class="first"><a href="<%//=Url.Action("Show","Home",new {slug=pg.Slug}) %>"><%//=pg.Title%></a></li>
-          <%// } %>
+            foreach (var parent in Category.GetHierarchicalCategories()) {%>
+            <li id="cat<%=parent.CategoryID%>" class="first"><a href="<%=Url.Action("Show","Home",new {slug=parent.Slug}) %>"><%=parent.LocalizedName%></a></li>
+          <%} %>
 
     </ul>
     </div>
