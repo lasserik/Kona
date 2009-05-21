@@ -1,0 +1,86 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <asp:PlaceHolder runat="server" id="metas">
+    <%=Html.Metas(this.SiteData()) %>    
+    </asp:PlaceHolder>
+     <link rel="stylesheet" href="/scripts/jquery.contextMenu.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/common.css" />
+    <script type="text/javascript" src="/scripts/jquery-1.3.1.js"></script>
+    <script type="text/javascript" src="/scripts/jquery-ui-1.6.js"></script>
+
+    </head>
+<body>
+<body>
+	<!-- Start Header -->
+	<div id="header">
+		<div class="topbottomcontainer">
+			<h1><a href="/" title="Adventure Works">Adventure Works<span></span></a></h1>
+			<hr />
+			<!-- top navigation -->
+			<ul id="navigation">
+				<li class="active"><a href="#" title="Home">Home</a></li>
+				<li><a href="#" title="About">About</a></li>
+				<li><a href="#" title="Services">Services</a></li>
+				<li><a href="#" title="Portofolio">Portofolio</a></li>
+				<li><a href="#" title="Contact">Contact</a></li>
+			</ul>
+			<hr />
+		</div>
+	</div>
+	<!-- Start Main Content -->
+	<div id="main" class="container">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+	<div id="bottominfo">
+		<div class="topbottomcontainer">
+			<!-- bottom left information -->
+			<div class="bottomcolumn">
+				<h3>Links to Help You Succeed</h3>
+				<p>Follow these links to learn more great business tips</p>
+				<ul class="borderedlist iconlist">
+					<li><a href="#" title="Keep your clients in the know">Keep your clients in the know</a></li>
+					<li><a href="#" title="Current specials and discounts">Current specials and discounts</a></li>
+					<li><a href="#" title="Links to your services and promos">Links to your services and promos</a></li>
+				</ul>
+			</div>
+			<!-- bottom center information -->
+			<div class="bottomcolumn">
+				<h3>Recent Client Lists</h3>
+				<p>Here is a list of some of our satisfied customers.</p>
+				<ul class="borderedlist iconlist">
+					<li><a href="#" title="Keep your clients in the know">Keep your clients in the know</a></li>
+					<li><a href="#" title="Current specials and discounts">Current specials and discounts</a></li>
+					<li><a href="#" title="Links to your services and promos">Links to your services and promos</a></li>
+				</ul>
+			</div>
+			<!-- bottom right information -->
+			<div class="bottomcolumn bottomright">
+				<h3>Stay Informed</h3>
+				<p>Subscribe to our e-news. Every month you recieve all the latest info, straight to your inbox.</p>
+				<form action="#">
+					<input type="text" name="email" class="enewsbox" />
+					<input type="button" class="button" value="Submit" />
+				</form>
+			</div>
+			<hr />
+		</div>
+	</div>
+	<!-- Start Footer -->
+	<div id="footer">
+		<div class="container">
+			<a id="designby" href="http://www.studio7designs.com/" title="Design by STUDIO7DESIGNS">WEB DESIGN BY STUDIO7DESIGNS</a>
+			<ul id="footer_navigation">
+				<li><a href="#" title="Home">Home</a></li>
+				<li><a href="#" title="About">About</a></li>
+				<li><a href="#" title="Services">Services</a></li>
+				<li><a href="#" title="Portofolio">Portofolio</a></li>
+				<li><a href="#" title="Contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
