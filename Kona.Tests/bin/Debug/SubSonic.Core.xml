@@ -3000,6 +3000,22 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
+        <member name="M:SubSonic.Query.SqlQuery.InnerJoin``1(System.String,System.String)">
+            <summary>
+            Creates an inner join based on the passed-in column names
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fromColumnName"></param>
+            <param name="toColumnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SubSonic.Query.SqlQuery.InnerJoin``1">
+            <summary>
+            Creates an Inner Join, guessing based on Primary Key matching
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
         <member name="M:SubSonic.Query.SqlQuery.InnerJoin(SubSonic.Schema.IColumn,SubSonic.Schema.IColumn)">
             <summary>
             Inners the join.

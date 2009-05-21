@@ -1,11 +1,11 @@
 ﻿<%@ Control Language="C#"  Inherits="System.Web.Mvc.ViewUserControl<Widget>" %>
 
-<div class="prodWidget">
-    <h4><%=Model.Title %></h4><hr/>
-    <ul id="imgholder_<%=Model.WidgetID %>" class="prodWidget">
+<div >
+    <h2><%=Model.Title %></h2>
+    <ul id="imgholder_<%=Model.WidgetID %>" class="product-results">
     
         <%foreach (Product p in Model.Products) { %>
-        <div class="fltleft prodItem">
+        <div class="prodItem">
             <a href="<%=Url.Action("show","home",new{sku=p.SKU})%>" title="Go to <%= p.ProductName %> Details Page">
             <img src="<%=Html.ProductImage(p.DefaultImageFile) %>" alt="<%=p.ProductName %>"/>
             <p>

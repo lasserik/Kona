@@ -31,7 +31,7 @@ namespace Kona.Web {
             var request = controllerContext.RequestContext;
             if (controllerContext.Controller.GetType().BaseType == typeof(KonaController)) {
                 var orchardController = controllerContext.Controller as KonaController;
-                string template = orchardController.ThemeName;
+                string template = orchardController.SiteData.ThemeName;
                 string templatedViewName = string.Format(CultureInfo.InvariantCulture, "~/Views/Themes/{0}/{1}.aspx", template, viewName);
 
                 masterName = string.IsNullOrEmpty(masterName) ? "Theme.master" : masterName;

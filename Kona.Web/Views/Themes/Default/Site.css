@@ -19,7 +19,8 @@ html {height: 100%;}
 
 body {font: normal 62.5% "Tahoma", "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
 /*background:url(Kona_Homepage2.png) no-repeat top center;*/
-background:url(images/bodyBackground.gif) center repeat-y #f0f0f0;
+/*background:url(images/bodyBackground.gif) center repeat-y #f0f0f0;*/
+
 height: 100%;
 text-align:left; color:#142e18;}
 
@@ -109,7 +110,7 @@ cursor:pointer;
 }
 
 
-/*Outter layout
+/*Outer layout
 ----------------------------------------------------------*/
 
 /* -- Wraps the whole page so footer can be pushed down to the bottom. html and body both need to have height set to 100% for this to work -- */
@@ -130,19 +131,19 @@ html>body #wrapper {height: auto;}
 	}
 	
 #hdr2 {
-	width:96em; /* 960px / 10px = 96em */ 
+	width:90%;/* 960px / 10px = 96em */ 
 	margin:0 auto;
 	}
 
 #hdr3 {
-	width:96em; /* 960px */
+	width:90%; /* 960px */
 	height:2.8em; 
 	margin:1em auto 1em auto;
 	border:1px #c5d0ca solid;
 	}
 
 #bdy {
-	width:96em; /* 960px */
+	width:90%;
 	padding-bottom:20em;   /*Paddin for the footer */
 	margin:0 auto;
 	}
@@ -152,12 +153,12 @@ html>body #wrapper {height: auto;}
 	bottom: 0;
 	width:100%;
 	background:#30405e;
-	background:url(images/bkgnd_ftter.gif) no-repeat center bottom;
+	/*background:url(images/bkgnd_ftter.gif) no-repeat center bottom;*/
 	min-height:10em;
 }
 
 #ftr2{
-	width:94em; /* 960px */
+	width:90%; /* 960px */
 	margin:0 auto 2em auto;
 	padding:.8em;
 	background:#30405e;
@@ -169,9 +170,9 @@ html>body #wrapper {height: auto;}
 ----------------------------------------------------------*/
 	
 .colleft {
-min-width: 18em;
-width: 18em; /*180px*/
-min-height: 1em;
+    min-width: 18em;
+    width: 18em; /*180px*/
+    min-height: 1em;
 }
 
 /*  em based containors - Used for middle column 2 or 3 column layout
@@ -289,3 +290,7 @@ ul.product-results { margin:14px; }
 ul.product-results li { list-style:none; width:180px; float:left; margin-left:7px; height:215px; text-align:center;}
 ul.product-results li h3 { font-size:100%; }
 
+
+#leftcolumn{
+    float:left;
+}

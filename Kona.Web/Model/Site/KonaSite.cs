@@ -90,7 +90,7 @@ namespace Kona.Data {
 
             // In case the deserialization format changed or sth went wrong
             if (string.IsNullOrEmpty(site.ThemeName)) {
-                site.ThemeName = "Blue";
+                site.ThemeName = "Eko";
             }
 
             return site;

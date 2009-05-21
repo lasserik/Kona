@@ -15,7 +15,7 @@ namespace Kona.Web.Controllers {
             
             //TODO: This is for test/dev. Remove 
             this.SiteData = KonaSite.GetSite("/");
-
+            this.Categories = Category.GetHierarchicalCategories();
         }
 
         public ActionResult Login() {

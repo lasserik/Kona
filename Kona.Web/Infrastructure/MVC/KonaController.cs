@@ -33,6 +33,16 @@ namespace Kona.Web {
             }
         }
 
+        public IList<Category> Categories {
+            get {
+
+                return (IList<Category>)ViewData["Categories"];
+            }
+            set {
+                ViewData["Categories"] = value;
+            }
+        }
+
         public KonaSite SiteData {
             get {
 

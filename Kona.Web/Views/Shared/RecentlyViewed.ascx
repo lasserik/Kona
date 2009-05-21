@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
         <div class="leftnavMod">
-            <h6>Recently Viewed</h6>
-            <ul class="leftnavList">
+            <h3 class="leftbox">Recently Viewed</h3>
+            <ul class="leftbox borderedlist">
                 <li><a href="#">Donec lacus</a></li>
                 <li><a href="#">Aenean id nunc</a></li>
                 <li><a href="#">Fusce non nibh</a></li>

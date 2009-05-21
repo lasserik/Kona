@@ -44,19 +44,6 @@
             </p>
          </div>
     </div> 
-
-    <!--Top Navigation-->
-    <div id="hdr3" class="bkgrnd2">
-    <ul class="topNav" id="menulist">
-          <%
-              //IEnumerable<Kona.Data.Page> parentPages = Kona.Data.Page.GetParentPages();
-            foreach (var parent in Category.GetHierarchicalCategories()) {%>
-            <li id="cat<%=parent.CategoryID%>" class="first"><a href="<%=Url.Action("Show","Home",new {slug=parent.Slug}) %>"><%=parent.LocalizedName%></a></li>
-          <%} %>
-
-    </ul>
-    </div>
-
     <asp:ContentPlaceHolder ID="MainContent" runat="server" />
 
     <!--Clear out three column layout-->

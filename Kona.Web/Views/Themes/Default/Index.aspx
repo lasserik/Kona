@@ -6,30 +6,10 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-         <script type="text/javascript">
-            $(document).ready(function() {
 
-                $('#menulist').sortable({
-                    stop: function(event, ui) {
-                        orderPages();
-                    }
-                });
-            });
-            
-            function orderPages() {
-                var itemArray = new Array();
-                $('#menulist li').each(function(i, item) {
-                    itemArray[i] = item.id;
-                })
-                $.post("/page/sortpages/", {
-                    pageid:itemArray
-                });
-            }
-            
-        </script>
 <div id="bdy" class="bkgrnd3">
-    <div class="colleft fltleft">
-        <%//this.RenderWidgets("sidebar1"); %>
+    <div id="leftcolumn">
+        <%this.RenderWidgets("sidebar1", false); %>
     </div>
   
     <div class="colmiddle fltleft">
@@ -38,7 +18,7 @@
   
     <div class="colright fltright">
         <%//if (this.user() != null) { %>
-        <div class="sidebarWidget"><h5>Admin</h5>
+        <div>
             <div class="sidebarContent">
                 <ul class="leftnavList">
                     <li><img src="/content/icons/cog_edit.png" /> <a href="<%//=Url.Action("Index","Site") %>">Site Config</a></li>
@@ -53,7 +33,7 @@
            <div class="sidebarContent"><form><input type="text" /><br /><input type="submit" value="Search" /></form></div>
        </div>
       
-       <%//this.RenderWidgets("sidebar2"); %>
+        <%this.RenderWidgets("sidebar2", false); %>
     </div>
 
 
